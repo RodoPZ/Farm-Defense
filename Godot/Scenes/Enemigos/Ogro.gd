@@ -1,5 +1,5 @@
 extends "res://Scenes/Enemigos/Enemigos.gd"
 
 func _ready():
-	speed = 20
+	name = self.get_name()
 	._ready()
