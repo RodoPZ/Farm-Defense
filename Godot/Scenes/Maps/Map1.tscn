@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Tiles/Placeholder/Camino.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Torres/Pollo.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Torres/Puerco.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Torres/Vaca.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Torres/Cabra.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Torres/Gallina.tscn" type="PackedScene" id=6]
 
 [sub_resource type="TileSet" id=1]
@@ -55,14 +55,14 @@ tile_data = PoolIntArray( -65523, 0, 0, 13, 0, 0, 65549, 0, 0, 131085, 0, 0, 196
 
 [node name="Torres" type="Node2D" parent="."]
 
+[node name="Puerco" parent="Torres" instance=ExtResource( 4 )]
+position = Vector2( 136, 72 )
+
 [node name="Pollo" parent="Torres" instance=ExtResource( 3 )]
 position = Vector2( 40, 72 )
 
 [node name="Gallina" parent="Torres" instance=ExtResource( 6 )]
-position = Vector2( 98.2154, 105.231 )
+position = Vector2( 56, 104 )
 
-[node name="Puerco" parent="Torres" instance=ExtResource( 4 )]
-position = Vector2( 121.787, 70.4345 )
-
-[node name="Vaca" parent="Torres" instance=ExtResource( 5 )]
-position = Vector2( 75.2049, 70.7151 )
+[node name="Cabra" parent="Torres" instance=ExtResource( 5 )]
+position = Vector2( 88, 72 )
