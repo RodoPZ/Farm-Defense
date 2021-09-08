@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Sprites/Vaca.png" type="Texture" id=1]
+
+[node name="Vaca" type="Node2D"]
+
+[node name="Vaca" type="Sprite" parent="."]
+texture = ExtResource( 1 )
