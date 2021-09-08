@@ -1,0 +1,27 @@
+TOWER DEFENSE
+
+Animales defienden la granja de monstruos
+3 animales
+Vaca 		2l 10s/l	Genera leche, la cual se vende por dinero para comprar más animales
+Pollito		1l 1 dps	Dispara una semilla, ataque básico (3x3)
+Gallina		3l 1 dps	Dispara semillas en area (3x3)
+Cochino 	5l 0 dps	Hace lodo, ralentiza 50% unidades (5x5)
+Cabra 		5l 2 dps	Matatanques, recarga golpe
+
+Enemigos
+3 enemigos
+Slimes 		5	2s/c		Velocidad normal, frágil
+Esqueletos	3	1s/c 		Rápido, frágil
+Ogros		50	5s/c		Lento, tanque
+
+Lose condition	Que un monstruo pase
+
+
+3 ciclos de animación ataque
+lateral x x x
+arriba x x x
+abajo x x x
+
+idle x x x
+spawn x x x
+
