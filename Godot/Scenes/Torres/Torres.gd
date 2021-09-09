@@ -2,11 +2,6 @@ extends Node2D
 var mover = false	
 var pos_actual = self.position
 
-func _physics_process(delta):
-	if (mover == true):	
-		var enemy_pos = get_node("../../Path/Esqueleto").get_position()
-		get_node("Torre").look_at(enemy_pos)
-
 func _on_Rango_body_entered(body):
 	mover = true
 func _on_Rango_body_exited(body):

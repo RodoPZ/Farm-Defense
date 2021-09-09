@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Assets/GUI/Boton_pause.png" type="Texture" id=1]
 [ext_resource path="res://Assets/GUI/Interfaz_buena.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Assets/Sprites/Cabra.png" type="Texture" id=9]
 [ext_resource path="res://Scenes/Gamescene.gd" type="Script" id=10]
 [ext_resource path="res://Assets/Sprites/Vaca.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/Pollo.png" type="Texture" id=12]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -26,14 +27,14 @@ region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ SubResource( 3 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 1 ), SubResource( 2 ) ],
 "loop": true,
 "name": "Pushed",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 3 ) ],
+"loop": true,
+"name": "Idle",
 "speed": 5.0
 } ]
 
@@ -67,16 +68,20 @@ region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=11]
 animations = [ {
-"frames": [ SubResource( 10 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
 "name": "Pushed",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 10 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
 } ]
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 16, 16 )
 
 [node name="Gamescene" type="Node2D"]
 script = ExtResource( 10 )
@@ -89,6 +94,7 @@ script = ExtResource( 5 )
 [node name="HUD" type="Control" parent="UI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -170,6 +176,7 @@ anchor_bottom = 1.0
 margin_left = -32.0
 margin_top = 16.0
 rect_pivot_offset = Vector2( -48, 32 )
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -186,6 +193,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource( 11 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Pollo" type="TextureButton" parent="UI/HUD/Buildbar" groups=[
 "build_buttons",
@@ -196,7 +206,7 @@ margin_right = 28.0
 margin_bottom = 48.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture_normal = ExtResource( 11 )
+texture_normal = SubResource( 12 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
