@@ -4,7 +4,7 @@ var pos_actual = self.position
 
 func _physics_process(delta):
 	if (mover == true):	
-		var enemy_pos = get_node("/root/Map1/Path2D/Ogro").get_position()
+		var enemy_pos = get_node("../../Path/Esqueleto").get_position()
 		get_node("Torre").look_at(enemy_pos)
 
 func _on_Rango_body_entered(body):
