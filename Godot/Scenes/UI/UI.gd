@@ -1,20 +1,18 @@
 extends CanvasLayer
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+func set_tower_preview(tower_type, mouse_position):
+	var drag_tower = load("res://Scenes/Torres/" + tower_type + ".tscn").instance()
+	drag_tower.set_name("DragTower")
+	#drag_tower.modulate = color("ad54ff3c")
+	
+	var control = Control.new()
+	control.add_child(drag_tower, true)
+	control.rect_position = mouse_position
+	control.set_name("TowerPreview")
+	add_child(control,true)
+	#move_child(get("TowerPreview"),0)
+	
+	
 func _on_pause_pressed():
 	get_tree().paused = true	
 

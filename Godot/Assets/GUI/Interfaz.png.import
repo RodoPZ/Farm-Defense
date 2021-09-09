@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tileset.png-bc116cc95ca9cef53488d85dac906f51.stex"
+path="res://.import/Interfaz.png-61b39a1fe4c12d9c62b27a01d65f5324.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/tileset.png"
-dest_files=[ "res://.import/tileset.png-bc116cc95ca9cef53488d85dac906f51.stex" ]
+source_file="res://Assets/GUI/Interfaz.png"
+dest_files=[ "res://.import/Interfaz.png-61b39a1fe4c12d9c62b27a01d65f5324.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
