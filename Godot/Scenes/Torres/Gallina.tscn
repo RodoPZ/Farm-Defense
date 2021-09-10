@@ -58,6 +58,7 @@ script = ExtResource( 2 )
 position = Vector2( 8, 8 )
 frames = SubResource( 9 )
 animation = "idle"
+frame = 2
 playing = true
 
 [node name="Abajo" type="Area2D" parent="."]
