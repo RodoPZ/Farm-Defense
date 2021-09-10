@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Interfaz.png-61b39a1fe4c12d9c62b27a01d65f5324.stex"
+path="res://.import/Interfaz.png-5c27cd8e33fc9121002f41b3e9960c0a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/GUI/Interfaz.png"
-dest_files=[ "res://.import/Interfaz.png-61b39a1fe4c12d9c62b27a01d65f5324.stex" ]
+source_file="res://Scenes/Interfaz.png"
+dest_files=[ "res://.import/Interfaz.png-5c27cd8e33fc9121002f41b3e9960c0a.stex" ]
 
 [params]
 

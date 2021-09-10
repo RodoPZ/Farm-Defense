@@ -51,7 +51,6 @@ func cancel_build_mode():
 	get_node("UI/TowerPreview").queue_free()
 
 func verify_and_build():
-	print("ok")
 	if build_valid:
 		var new_tower = load("res://Scenes/Torres/" + build_type + ".tscn").instance()
 		new_tower.position = build_location
