@@ -2,6 +2,7 @@ extends Node2D
 var mover = false	
 var pos_actual = self.position
 
+
 func _on_Rango_body_entered(body):
 	mover = true
 func _on_Rango_body_exited(body):

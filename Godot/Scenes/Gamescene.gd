@@ -4,7 +4,7 @@ var map_node
 
 var build_mode = false
 var build_valid = false
-var build_location 
+var build_location
 var build_type
 
 func _ready():
@@ -19,8 +19,8 @@ func _process(delta):
 		
 	
 func _unhandled_input(event):
-	if event.is_action_released("ui_accept"):
-		print("owo")
+	#if event.is_action_released("ui_accept"):
+	#	print("owo")
 	if event.is_action_released("ui_cancel") and build_mode == true:
 		cancel_build_mode()
 	if event.is_action_released("ui_accept") and build_mode == true:
@@ -35,14 +35,14 @@ func initiate_build_mode(tower_type):
 func update_tower_preview():
 	var mouse_position = get_global_mouse_position()
 	var current_tile = map_node.get_node("TowerExclusion").world_to_map(mouse_position)
-	var title_position = map_node.get_node("TowerExclusion").map_to_world(current_tile)
+	var tile_position = map_node.get_node("TowerExclusion").map_to_world(current_tile)
 	
 	if map_node.get_node("TowerExclusion").get_cellv(current_tile)==-1:
-		get_node("UI").update_tower_preview(title_position,"ad54ff3c")
-		build_valid=true
-		build_location = title_position
+		get_node("UI").update_tower_preview(tile_position,"ad54ff3c")
+		build_valid = true
+		build_location = tile_position
 	else:
-		get_node("UI").update_tower_preview(title_position,"adff4545")
+		get_node("UI").update_tower_preview(tile_position,"adff4545")
 		build_valid = false
 		
 func cancel_build_mode():
@@ -56,3 +56,5 @@ func verify_and_build():
 		var new_tower = load("res://Scenes/Torres/" + build_type + ".tscn").instance()
 		new_tower.position = build_location
 		map_node.get_node("Torres").add_child(new_tower,true)
+		#deduct cash
+		#update cash label
