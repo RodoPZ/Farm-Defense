@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Assets/GUI/Boton_pause.png" type="Texture" id=1]
 [ext_resource path="res://Assets/GUI/Interfaz.png" type="Texture" id=2]
@@ -17,8 +17,8 @@
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 1 )
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 4 )
 region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=3]
@@ -32,25 +32,9 @@ animations = [ {
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"frames": [ SubResource( 12 ) ],
 "loop": true,
 "name": "Pushed",
-"speed": 5.0
-} ]
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 4 )
-region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="SpriteFrames" id=7]
-animations = [ {
-"frames": [ SubResource( 5 ), SubResource( 6 ) ],
-"loop": true,
-"name": "Idle",
 "speed": 5.0
 } ]
 
@@ -112,7 +96,7 @@ texture = ExtResource( 2 )
 
 [node name="Buttons" type="HBoxContainer" parent="UI/HUD"]
 margin_left = 144.0
-margin_right = 192.0
+margin_right = 176.0
 margin_bottom = 16.0
 custom_constants/separation = 0
 __meta__ = {
@@ -123,8 +107,9 @@ __meta__ = {
 pause_mode = 2
 margin_right = 16.0
 margin_bottom = 16.0
+toggle_mode = true
 texture_normal = SubResource( 1 )
-texture_pressed = SubResource( 2 )
+texture_pressed = SubResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -134,24 +119,10 @@ visible = false
 frames = SubResource( 4 )
 animation = "Pushed"
 
-[node name="play" type="TextureButton" parent="UI/HUD/Buttons"]
+[node name="accel" type="TextureButton" parent="UI/HUD/Buttons"]
 pause_mode = 2
 margin_left = 16.0
 margin_right = 32.0
-margin_bottom = 16.0
-rect_pivot_offset = Vector2( -31.4332, 6.6687 )
-texture_normal = SubResource( 5 )
-texture_pressed = SubResource( 6 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="UI/HUD/Buttons/play"]
-visible = false
-frames = SubResource( 7 )
-animation = "Idle"
-
-[node name="accel" type="TextureButton" parent="UI/HUD/Buttons"]
-pause_mode = 2
-margin_left = 32.0
-margin_right = 48.0
 margin_bottom = 16.0
 toggle_mode = true
 texture_normal = SubResource( 8 )
@@ -261,6 +232,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="UI/HUD/Buttons/pause" to="UI" method="_on_pause_pressed"]
-[connection signal="pressed" from="UI/HUD/Buttons/play" to="UI" method="_on_play_pressed"]
+[connection signal="toggled" from="UI/HUD/Buttons/pause" to="UI" method="_on_pause_toggled"]
 [connection signal="toggled" from="UI/HUD/Buttons/accel" to="UI" method="_on_accel_toggled"]
