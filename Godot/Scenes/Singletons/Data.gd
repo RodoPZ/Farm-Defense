@@ -23,13 +23,13 @@ var tower_data = {
 
 var enemigos ={
 	"Esqueleto":{
-	"speed": 100,
+	"speed": 14,
 	"hp": 5},
 	
 	"Ogro":{
-	"speed": 20,
+	"speed": 4,
 	"hp": 5},
 	
 	"Slime":{
-	"speed": 50,
+	"speed": 8,
 	"hp": 5}}
