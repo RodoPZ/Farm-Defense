@@ -27,18 +27,20 @@ func update_tower_preview(new_position, color):
 		get_node("TowerPreview/DragTower").modulate = Color(color)
 		get_node("TowerPreview/Sprite").modulate = Color(color)
 	
-#func _on_pause_pressed():
-#	if on_pause_pressed = true:	
-#	get_tree().paused = true	
 
-#func _on_play_pressed():
-#	get_tree().paused = false	
-	
-func _on_pause_toggled(button_pressed):
-	if button_pressed == true:	
-		get_tree().paused = true
-	else:
+##
+## Funciones de botones
+##
+
+func _on_pause_toggled(_button_pressed):
+	if get_tree().is_paused():
 		get_tree().paused = false
+	elif get_parent().current_wave == 0:
+		get_parent().current_wave += 1
+		get_parent().start_next_wave()
+	else:
+		get_tree().paused = true
+		
 
 func _on_accel_toggled(button_pressed):
 		if button_pressed == true:

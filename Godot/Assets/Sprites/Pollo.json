@@ -99,6 +99,7 @@
  "meta": {
   "app": "http://www.aseprite.org/",
   "version": "1.2.29-dev",
+  "image": "Pollo.png",
   "format": "RGBA8888",
   "size": { "w": 192, "h": 16 },
   "scale": "1",

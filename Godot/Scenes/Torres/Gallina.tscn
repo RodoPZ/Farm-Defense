@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Assets/Sprites/Gallina.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Torres/Gallina.gd" type="Script" id=2]
@@ -35,7 +35,47 @@ region = Rect2( 96, 0, 16, 16 )
 atlas = ExtResource( 1 )
 region = Rect2( 112, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=9]
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 1 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 1 )
+region = Rect2( 112, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 1 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 1 )
+region = Rect2( 112, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=19]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
 "loop": true,
@@ -44,11 +84,21 @@ animations = [ {
 }, {
 "frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
-"name": "attack",
-"speed": 10.0
+"name": "attack_up",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"loop": true,
+"name": "attack_right",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "attack_down",
+"speed": 8.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 24, 24 )
 
 [node name="Gallina" type="Node2D"]
@@ -56,9 +106,8 @@ script = ExtResource( 2 )
 
 [node name="Torre" type="AnimatedSprite" parent="."]
 position = Vector2( 8, 8 )
-frames = SubResource( 9 )
+frames = SubResource( 19 )
 animation = "idle"
-frame = 1
 playing = true
 
 [node name="Abajo" type="Area2D" parent="."]
@@ -88,8 +137,8 @@ polygon = PoolVector2Array( 0, 0, 24, -24, 24, 24 )
 [node name="Rango" type="Area2D" parent="."]
 position = Vector2( 8, 8 )
 
-[node name="Rango" type="CollisionShape2D" parent="Rango"]
-shape = SubResource( 10 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rango"]
+shape = SubResource( 20 )
 
 [connection signal="body_entered" from="Abajo" to="." method="_on_Abajo_body_entered"]
 [connection signal="body_entered" from="Izquierda" to="." method="_on_Izquierda_body_entered"]
