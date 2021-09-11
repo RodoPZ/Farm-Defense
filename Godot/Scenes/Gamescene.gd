@@ -15,10 +15,10 @@ func _ready():
 	map_node = get_node("Map1")
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.connect("pressed",self,"initiate_build_mode",[i.get_name()])
-###	start_next_wave()
+	#start_next_wave()
 		
-	
-func _process(delta):
+	#si delta se usa quitar el underscore
+func _process(_delta):
 	if build_mode:
 		update_tower_preview()
 		
@@ -33,23 +33,23 @@ func _unhandled_input(event):
 ##
 ### Funciones de oleadas ###
 ##
-#func start_next_wave():
-#	var wave_data = retrieve_wave_data()
-#	yield(get_tree().create_timer(0.2),"timeout") ##Tiempo entre oleadas p
-#	#ara que no comiencen instantaneamente
-#	spawn_enemies(wave_data)
-#
-#func retrieve_wave_data():
-#	var wave_data = [["Esqueleto",0.7],["Slime",0.1]]
-#	current_wave += 1
-#	enemies_in_wave = wave_data.size()
-#	return wave_data
-#
-#func spawn_enemies(wave_data):
-#	for i in wave_data:
-#		var new_enemy = load("res://Scenes/Enemigos/" + i[0] + ".tscn").instance()
-#		map_node.get_node("Path").add_child(new_enemy, true)
-#		yield(get_tree().create_timer(i[1]),"timeout")
+func start_next_wave():
+	var wave_data = retrieve_wave_data()
+	yield(get_tree().create_timer(0.2),"timeout") ##Tiempo entre oleadas para que no comiencen instantaneamente
+	spawn_enemies(wave_data)
+
+func retrieve_wave_data():
+	var wave_data = [["Slime",0.5],["Slime",0.5],["Slime",0.5],["Slime",0.5],["Slime",0.5],["Slime",0.5],["Slime",0.5],["Slime",0.5],["Slime",0.5],["Slime",0.5],["Slime",0.5],["Slime",0.5]]
+	current_wave += 1
+	enemies_in_wave = wave_data.size()
+	return wave_data
+
+func spawn_enemies(wave_data):
+	for i in wave_data:
+		var new_enemy = load("res://Scenes/Enemigos/" + i[0] + ".tscn").instance() 
+		map_node.get_node("Path").add_child(new_enemy, true)
+		yield(get_tree().create_timer(i[1]),"timeout")
+
 
 ##
 ### Funciones de construcción ###
@@ -84,6 +84,8 @@ func verify_and_build():
 	if build_valid:
 		var new_tower = load("res://Scenes/Torres/" + build_type + ".tscn").instance()
 		new_tower.position = build_location
+		new_tower.built = true
+		new_tower.type = build_type
 		map_node.get_node("Torres").add_child(new_tower,true)
 		map_node.get_node("TowerExclusion").set_cellv(build_tile, 5)
 		#deduct cash

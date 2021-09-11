@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/Sprites/Vaca.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Torres/Vaca.gd" type="Script" id=2]
@@ -76,6 +76,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=17]
+extents = Vector2( 8, 8 )
+
 [node name="Vaca" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -84,3 +87,9 @@ position = Vector2( 8, 8 )
 frames = SubResource( 16 )
 animation = "idle"
 playing = true
+
+[node name="Rango" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rango"]
+position = Vector2( 8.13173, 7.95496 )
+shape = SubResource( 17 )

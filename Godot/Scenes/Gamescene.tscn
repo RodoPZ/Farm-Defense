@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Assets/GUI/Boton_pause.png" type="Texture" id=1]
 [ext_resource path="res://Assets/GUI/Interfaz.png" type="Texture" id=2]
@@ -14,50 +14,58 @@
 [ext_resource path="res://Assets/Sprites/Pollo.png" type="Texture" id=12]
 
 [sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 4 )
-region = Rect2( 16, 0, 16, 16 )
+[sub_resource type="AtlasTexture" id=2]
+atlas = SubResource( 1 )
+region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 4 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 3 ) ],
+"frames": [ SubResource( 4 ), SubResource( 3 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 12 ) ],
+"frames": [ SubResource( 1 ), SubResource( 5 ) ],
 "loop": true,
 "name": "Pushed",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 6 )
 region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=11]
+[sub_resource type="SpriteFrames" id=10]
 animations = [ {
-"frames": [ SubResource( 10 ) ],
+"frames": [ SubResource( 9 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 8 ), SubResource( 9 ) ],
+"frames": [ SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
 "name": "Pushed",
 "speed": 5.0
@@ -67,6 +75,7 @@ animations = [ {
 script = ExtResource( 10 )
 
 [node name="Map1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, 0.280609 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource( 5 )
@@ -108,15 +117,15 @@ pause_mode = 2
 margin_right = 16.0
 margin_bottom = 16.0
 toggle_mode = true
-texture_normal = SubResource( 1 )
-texture_pressed = SubResource( 12 )
+texture_normal = SubResource( 2 )
+texture_pressed = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="UI/HUD/Buttons/pause"]
 visible = false
-frames = SubResource( 4 )
+frames = SubResource( 6 )
 animation = "Pushed"
 
 [node name="accel" type="TextureButton" parent="UI/HUD/Buttons"]
@@ -125,8 +134,8 @@ margin_left = 16.0
 margin_right = 32.0
 margin_bottom = 16.0
 toggle_mode = true
-texture_normal = SubResource( 8 )
-texture_pressed = SubResource( 9 )
+texture_normal = SubResource( 7 )
+texture_pressed = SubResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -134,7 +143,7 @@ __meta__ = {
 [node name="Salir_Sprite" type="AnimatedSprite" parent="UI/HUD/Buttons/accel"]
 visible = false
 position = Vector2( 32, 8 )
-frames = SubResource( 11 )
+frames = SubResource( 10 )
 animation = "Pushed"
 offset = Vector2( -32, -8 )
 
@@ -154,10 +163,10 @@ __meta__ = {
 [node name="Vaca" type="TextureButton" parent="UI/HUD/Buildbar" groups=[
 "build_buttons",
 ]]
-margin_left = 4.0
-margin_top = 8.0
-margin_right = 20.0
-margin_bottom = 24.0
+margin_left = 3.57907
+margin_top = 9.12246
+margin_right = 19.5791
+margin_bottom = 25.1225
 rect_min_size = Vector2( 16, 16 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -171,10 +180,10 @@ __meta__ = {
 [node name="Pollo" type="TextureButton" parent="UI/HUD/Buildbar" groups=[
 "build_buttons",
 ]]
-margin_left = 11.8127
-margin_top = 32.0
-margin_right = 27.8127
-margin_bottom = 48.0
+margin_left = 13.3762
+margin_top = 35.3007
+margin_right = 29.3762
+margin_bottom = 51.3007
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource( 12 )
@@ -187,10 +196,10 @@ __meta__ = {
 [node name="Gallina" type="TextureButton" parent="UI/HUD/Buildbar" groups=[
 "build_buttons",
 ]]
-margin_left = 3.68503
-margin_top = 56.0
-margin_right = 19.685
-margin_bottom = 72.0
+margin_left = 3.12378
+margin_top = 57.2628
+margin_right = 19.1238
+margin_bottom = 73.2628
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource( 8 )
@@ -203,10 +212,10 @@ __meta__ = {
 [node name="Puerco" type="TextureButton" parent="UI/HUD/Buildbar" groups=[
 "build_buttons",
 ]]
-margin_left = 12.0
-margin_top = 80.0
-margin_right = 28.0
-margin_bottom = 96.0
+margin_left = 12.2806
+margin_top = 82.9465
+margin_right = 28.2806
+margin_bottom = 98.9465
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource( 7 )

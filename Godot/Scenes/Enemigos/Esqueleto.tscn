@@ -69,7 +69,7 @@ region = Rect2( 240, 0, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=17]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 4 ), SubResource( 3 ), SubResource( 2 ) ],
 "loop": true,
 "name": "walk",
 "speed": 12.0
@@ -84,6 +84,8 @@ animations = [ {
 extents = Vector2( 6, 8 )
 
 [node name="Esqueleto" type="PathFollow2D"]
+rotate = false
+loop = false
 script = ExtResource( 2 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
@@ -92,7 +94,7 @@ script = ExtResource( 2 )
 position = Vector2( 0, -2 )
 frames = SubResource( 17 )
 animation = "walk"
-frame = 1
+frame = 7
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
