@@ -15,9 +15,8 @@ func on_new_game_pressed():
 	get_node("MainMenu").queue_free()
 	var game_scene = load("res://Scenes/Gamescene.tscn").instance()
 	add_child(game_scene)
-	
-	
 
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -140,17 +140,17 @@ animations = [ {
 }, {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
 "loop": true,
-"name": "attack_up",
+"name": "attack_right",
 "speed": 6.0
 }, {
 "frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
 "loop": true,
-"name": "attack_right",
+"name": "attack_down",
 "speed": 6.0
 }, {
 "frames": [ SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
 "loop": true,
-"name": "attack_down",
+"name": "attack_up",
 "speed": 6.0
 } ]
 
@@ -164,7 +164,7 @@ script = ExtResource( 2 )
 position = Vector2( 8, 8 )
 frames = SubResource( 33 )
 animation = "idle"
-frame = 4
+frame = 2
 playing = true
 
 [node name="Abajo" type="Area2D" parent="."]
