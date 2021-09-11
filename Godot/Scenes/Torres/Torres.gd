@@ -18,6 +18,7 @@ onready var animated_sprite : AnimatedSprite = get_node("Torre")
 func _ready():
 	if built:
 		self.get_node("Rango/CollisionShape2D").get_shape().extents = 8*Vector2(Data.tower_data[type]["range"],Data.tower_data[type]["range"])
+		animated_sprite.speed_scale = Data.tower_data[type]["rof"]
 
 
 ##
@@ -59,7 +60,7 @@ func _on_Rango_body_exited(body):
 	enemy_array.erase(body.get_parent())
 	mover = false
 	#print("idle")
-	animated_sprite.play("idle")	
+	animated_sprite.play("idle")
 	
 func _on_Derecha_body_entered(_body):
 	#print("Sprite_Derecha")

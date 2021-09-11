@@ -1,25 +1,32 @@
 extends Node
 
+var player = {
+	"Score": 0,
+	"Milk": 0,
+	"HP": 0,
+	"Game_Over": false	
+}
+
 var tower_data = {
 	"Pollo": {
-	"damage": 20,
-	"rof": 1,
-	"range": 3},
+	"damage": 10,
+	"rof": 3,
+	"range": 4},
 	
 	"Gallina":{
-	"damage": 20,
+	"damage": 1,
 	"rof": 1,
-	"range": 3},
+	"range": 4},
 	
 	"Puerco":{
-	"damage":20,
+	"damage":0,
 	"rof": 1,
 	"range": 4},
 	
 	"Cabra":{
-	"damage": 20,
-	"rof": 1,
-	"range": 2},
+	"damage": 1,
+	"rof": .2,
+	"range": 3},
 	
 	"Vaca":{
 	"damage": 0,

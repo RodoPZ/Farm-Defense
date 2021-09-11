@@ -39,7 +39,7 @@ func start_next_wave():
 	spawn_enemies(wave_data)
 
 func retrieve_wave_data():
-	var wave_data = [["Slime",0.5],["Slime",0.5],["Slime",0.5],["Slime",0.5],["Slime",0.5],["Slime",0.5],["Slime",0.5],["Slime",0.5],["Slime",0.5],["Slime",0.5],["Slime",0.5],["Slime",0.5]]
+	var wave_data = [["Slime",2],["Slime",2],["Slime",2],["Slime",2],["Slime",2]]
 	current_wave += 1
 	enemies_in_wave = wave_data.size()
 	return wave_data
