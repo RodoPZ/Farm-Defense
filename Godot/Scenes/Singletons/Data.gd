@@ -10,7 +10,7 @@ var player = {
 var tower_data = {
 	"Pollo": {
 	"damage": 10,
-	"rof": 3,
+	"rof": 2,
 	"range": 4},
 	
 	"Gallina":{
@@ -31,7 +31,8 @@ var tower_data = {
 	"Vaca":{
 	"damage": 0,
 	"rof": 1,
-	"range": 0}
+	"range": 0,
+	"drop_time": 20}
 	}
 
 var enemigos ={

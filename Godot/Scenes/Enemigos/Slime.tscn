@@ -81,11 +81,11 @@ script = ExtResource( 2 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 
-[node name="Slime" type="AnimatedSprite" parent="KinematicBody2D"]
+[node name="Enemigo" type="AnimatedSprite" parent="KinematicBody2D"]
 position = Vector2( 0, -4 )
 frames = SubResource( 14 )
 animation = "walk"
-frame = 1
+frame = 4
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
