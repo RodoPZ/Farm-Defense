@@ -94,3 +94,10 @@ playing = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rango"]
 position = Vector2( 8.13173, 7.95496 )
 shape = SubResource( 17 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="animation_finished" from="Torre" to="." method="_on_Torre_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

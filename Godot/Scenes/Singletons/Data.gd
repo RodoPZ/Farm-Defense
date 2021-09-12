@@ -31,7 +31,8 @@ var tower_data = {
 	"Vaca":{
 	"damage": 0,
 	"rof": 1,
-	"range": 0}
+	"range": 0,
+	"drop_time": 20}
 	}
 
 var enemigos ={

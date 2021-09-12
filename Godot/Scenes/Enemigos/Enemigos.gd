@@ -2,7 +2,7 @@ extends PathFollow2D
 var tower_type = null
 var speed = 10
 var hp = 50
-#var tipo_enemigo
+onready var animated_sprite : AnimatedSprite = get_node("KinematicBody2D/Enemigo")
 onready var health_bar = get_node("HealthBar")
 
 func _ready():

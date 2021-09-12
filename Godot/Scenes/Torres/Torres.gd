@@ -2,6 +2,7 @@ extends Node2D
 var spell = preload("res://Scenes/Projectiles/Semilla.tscn")
 var mover = false	
 var pos_actual = self.position
+var anim_free = true
 
 var type
 var enemy_array = []
@@ -68,19 +69,32 @@ func _on_Rango_body_exited(body):
 	enemy_array.erase(body.get_parent())
 	mover = false
 	#print("idle")
-	animated_sprite.play("idle")
-	
+	if anim_free == true:
+		anim_free = false
+		animated_sprite.play("idle")
+
 func _on_Derecha_body_entered(_body):
 	#print("Sprite_Derecha")
-	animated_sprite.flip_h = false
-	animated_sprite.play("attack_right")
+	if anim_free == true:
+		anim_free = false
+		animated_sprite.flip_h = false
+		animated_sprite.play("attack_right")
 func _on_Abajo_body_entered(_body):
 	#print("Sprite_Abajo")
-	animated_sprite.play("attack_down")
+	if anim_free == true:
+		anim_free = false
+		animated_sprite.play("attack_down")
 func _on_Izquierda_body_entered(_body):
 	#print("Sprite_Izquierda")
-	animated_sprite.flip_h = true
-	animated_sprite.play("attack_right")
+	if anim_free == true:
+		anim_free = false
+		animated_sprite.flip_h = true
+		animated_sprite.play("attack_right")
 func _on_Arriba_body_entered(_body):
 	#print("Sprite_Arriba")
-	animated_sprite.play("attack_up")
+	if anim_free == true:
+		anim_free = false
+		animated_sprite.play("attack_up")
+
+func _on_Torre_animation_finished():
+	anim_free = true

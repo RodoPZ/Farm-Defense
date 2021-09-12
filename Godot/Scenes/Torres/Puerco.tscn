@@ -164,7 +164,7 @@ script = ExtResource( 2 )
 position = Vector2( 8, 8 )
 frames = SubResource( 33 )
 animation = "idle"
-frame = 2
+frame = 4
 playing = true
 
 [node name="Abajo" type="Area2D" parent="."]
@@ -197,6 +197,7 @@ polygon = PoolVector2Array( 0, 0, 24, -24, 24, 24 )
 position = Vector2( 8, 8 )
 shape = SubResource( 34 )
 
+[connection signal="animation_finished" from="Torre" to="." method="_on_Torre_animation_finished"]
 [connection signal="body_entered" from="Abajo" to="." method="_on_Abajo_body_entered"]
 [connection signal="body_entered" from="Izquierda" to="." method="_on_Izquierda_body_entered"]
 [connection signal="body_entered" from="Arriba" to="." method="_on_Arriba_body_entered"]
