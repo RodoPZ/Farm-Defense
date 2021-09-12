@@ -1,4 +1,5 @@
 extends Node2D
+var spell = preload("res://Scenes/Projectiles/Semilla.tscn")
 var mover = false	
 var pos_actual = self.position
 
@@ -29,6 +30,7 @@ func _physics_process(_delta):
 		select_enemy()
 		turn()
 		if ready:
+			#bullet()
 			fire()
 	else:
 		enemy = null
@@ -46,16 +48,24 @@ func select_enemy():
 	enemy = enemy_array[enemy_index]
 
 func fire():
+
 	ready = false
 	enemy.on_hit(Data.tower_data[type]["damage"])
 	yield(get_tree().create_timer(Data.tower_data[type]["rof"]), "timeout")
 	ready = true
 
+"""func bullet():
+	var spell_instance = spell.instance()
+	spell_instance.position = get_global_position()
+	spell_instance.rotation = get_angle_to(enemy.position)
+	add_child(spell_instance)
+"""
+
 # si body se usa quitar el underscore
 func _on_Rango_body_entered(body):
 	enemy_array.append(body.get_parent())
 	mover = true
-	print(enemy_array)
+	#print(enemy_array)
 func _on_Rango_body_exited(body):
 	enemy_array.erase(body.get_parent())
 	mover = false
