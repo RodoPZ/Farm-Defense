@@ -84,17 +84,17 @@ animations = [ {
 }, {
 "frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
-"name": "attack_up",
+"name": "attack_right",
 "speed": 8.0
 }, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
-"name": "attack_right",
+"name": "attack_down",
 "speed": 8.0
 }, {
 "frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
 "loop": true,
-"name": "attack_down",
+"name": "attack_up",
 "speed": 8.0
 } ]
 
@@ -108,6 +108,7 @@ script = ExtResource( 2 )
 position = Vector2( 8, 8 )
 frames = SubResource( 19 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="Abajo" type="Area2D" parent="."]
@@ -140,6 +141,7 @@ position = Vector2( 8, 8 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rango"]
 shape = SubResource( 20 )
 
+[connection signal="animation_finished" from="Torre" to="." method="_on_Torre_animation_finished"]
 [connection signal="body_entered" from="Abajo" to="." method="_on_Abajo_body_entered"]
 [connection signal="body_entered" from="Izquierda" to="." method="_on_Izquierda_body_entered"]
 [connection signal="body_entered" from="Arriba" to="." method="_on_Arriba_body_entered"]
