@@ -10,7 +10,7 @@ var player = {
 var tower_data = {
 	"Pollo": {
 	"damage": 10,
-	"rof": 3,
+	"rof": 2,
 	"range": 4},
 	
 	"Gallina":{
