@@ -12,7 +12,7 @@ var player = {
 
 var tower_data = {
 	"Pollo": {
-	"damage": 10,
+	"damage": 5,
 	"rof": 2,
 	"range": 4,
 	"price": 1},
@@ -45,8 +45,8 @@ var tower_data = {
 
 var enemigos ={
 	"Slime":{
-	"speed": 30,
-	"hp": 5,
+	"speed": 15,
+	"hp": 10,
 	"score": 1
 	},
 	
@@ -58,7 +58,22 @@ var enemigos ={
 	
 	"Ogro":{
 	"speed": 4,
-	"hp": 5,
+	"hp": 20,
 	"score": 20
 	}
 	}
+
+var wave={
+	"Wave1":{
+	"wave": [["Slime",2],["Esqueleto",3],["Ogro",4],["Slime",5],["Slime",6]]
+	},
+	"Wave2":{
+	"wave": [["Slime",2],["Esqueleto",3],["Ogro",4],["Slime",5],["Slime",6]]
+	},
+	"Wave3":{
+	"wave": [["Slime",2],["Esqueleto",3],["Ogro",4],["Slime",5],["Slime",6]]
+	},
+	"Wave4":{
+	"wave": [["Slime",2],["Esqueleto",3],["Ogro",4],["Slime",5],["Slime",6]]
+	}
+}

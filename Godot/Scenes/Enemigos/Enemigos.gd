@@ -1,16 +1,20 @@
 extends PathFollow2D
 var tower_type = null
-var speed = 10
+var tower_name = ""
+var speed = 0
 var hp = 50
 onready var animated_sprite : AnimatedSprite = get_node("KinematicBody2D/Enemigo")
 onready var health_bar = get_node("HealthBar")
 
+func _init(_tower_name = 0).():
+	tower_name = _tower_name
+	
 func _ready():
+	speed = Data.enemigos[tower_name]["speed"]	
+	hp = Data.enemigos[tower_name]["hp"]	
 	health_bar.max_value = hp
 	health_bar.value = hp
-#comenté connect porque daba errores Rodo
-#	connect("", self, "signal")
-#	speed = Data.enemigos[name]["speed"]
+  
 #	health_bar.set_as_toplevel(true)
 
 
