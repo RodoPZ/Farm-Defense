@@ -34,11 +34,14 @@ func update_tower_preview(new_position, color):
 
 func _on_pause_toggled(_button_pressed):
 	if get_tree().is_paused():
+		Data.player["Player"]["paused"] = false
 		get_tree().paused = false
 	elif get_parent().current_wave == 0:
+		Data.player["Player"]["paused"] = false
 		get_parent().current_wave += 1
 		get_parent().start_next_wave()
 	else:
+		Data.player["Player"]["paused"] = true
 		get_tree().paused = true
 		
 

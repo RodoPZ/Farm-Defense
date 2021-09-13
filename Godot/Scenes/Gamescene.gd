@@ -62,8 +62,10 @@ func initiate_build_mode(tower_type):
 	if build_mode:
 		cancel_build_mode()
 	build_type = tower_type #+ T1, T2, etc
-	build_mode = true
-	get_node("UI").set_tower_preview(build_type,get_global_mouse_position())
+	if Data.player["Player"]["leche"] >= Data.tower_data[tower_type]["price"]:
+		build_valid = false
+		build_mode = true
+		get_node("UI").set_tower_preview(build_type,get_global_mouse_position())
 
 func update_tower_preview():
 	var mouse_position = get_global_mouse_position()
@@ -84,6 +86,7 @@ func update_tower_preview():
 		get_node("UI").update_tower_preview(tile_position,"adff4545")
 		build_valid = false
 		
+		
 func cancel_build_mode():
 	build_mode = false
 	build_valid = false
@@ -91,11 +94,10 @@ func cancel_build_mode():
 
 func verify_and_build():
 	if build_valid:
+		Data.player["Player"]["leche"] -= Data.tower_data[build_type]["price"]
 		var new_tower = load("res://Scenes/Torres/" + build_type + ".tscn").instance()
 		new_tower.position = build_location
 		new_tower.built = true
 		new_tower.type = build_type
 		map_node.get_node("Torres").add_child(new_tower,true)
 		map_node.get_node("AllowedTorres").set_cellv(build_tile, 7)
-		#deduct cash
-		#update cash label

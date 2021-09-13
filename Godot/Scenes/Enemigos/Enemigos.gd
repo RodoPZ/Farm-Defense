@@ -14,8 +14,7 @@ func _ready():
 	hp = Data.enemigos[tower_name]["hp"]	
 	health_bar.max_value = hp
 	health_bar.value = hp
-	#comenté connect porque daba errores Rodo
-
+  
 #	health_bar.set_as_toplevel(true)
 
 
@@ -25,7 +24,7 @@ func _physics_process(delta):
 
 func move(delta):
 	set_offset(get_offset() + speed * delta)
-#	health_bar.set_position(position - Vector2(17,6))
+	#health_bar.set_position(position - Vector2(17,6))
 
 func on_hit(damage):
 	hp -= damage

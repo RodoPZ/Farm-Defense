@@ -11,7 +11,7 @@ func init(targetpos,type):
 	turret_type = type
 	wr = weakref(target)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if (wr.get_ref()):
 		velocity = position.direction_to(target.position) * speed
 		if position.distance_to(target.position) > 5:
@@ -19,7 +19,7 @@ func _physics_process(delta):
 	else:
 		queue_free()		
 		
-func _on_Area2D_body_entered(body):
+func _on_Area2D_body_entered(_body):
 	target.on_hit(Data.tower_data[turret_type]["damage"])
 	queue_free()
 

@@ -26,9 +26,10 @@ func _unhandled_input(event):
 		$MainMenu.show()
 		$GameOver.hide()
 		Data.player["Player"]["score"] = 0
-		Data.player["Player"]["leche"] = 0
+		Data.player["Player"]["leche"] = 2
 		Data.player["Player"]["hp"] = 3
 		Data.player["Player"]["game_over"] = false
+		Data.player["Player"]["paused"] = false
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
