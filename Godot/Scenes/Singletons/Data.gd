@@ -3,7 +3,7 @@ extends Node
 var player = {
 	"Player": {
 	"score": 0,
-	"leche": 2,
+	"leche": 99,
 	"hp": 3,
 	"game_over": false,
 	"paused": true
@@ -64,16 +64,18 @@ var enemigos ={
 	}
 
 var wave={
+	#No poner tiempo en 0 porque le da amnsiedad
 	"Wave1":{
-	"wave": [["Slime",2],["Esqueleto",3],["Ogro",4],["Slime",5],["Slime",6]]
+	"wave": [["Slime",1],["Slime",2]]
 	},
 	"Wave2":{
-	"wave": [["Slime",2],["Esqueleto",3],["Ogro",4],["Slime",5],["Slime",6]]
+	"wave": [["Slime",1],["Slime",1],["Slime",2],["Slime",3],["Slime",4]]
 	},
 	"Wave3":{
-	"wave": [["Slime",2],["Esqueleto",3],["Ogro",4],["Slime",5],["Slime",6]]
+	"wave": [["Esqueleto",1],["Esqueleto",1.3],["Esqueleto",1.6],["Esqueleto",1.9],["Esqueleto",1.2]]
 	},
 	"Wave4":{
-	"wave": [["Slime",2],["Esqueleto",3],["Ogro",4],["Slime",5],["Slime",6]]
+	"wave": [["Slime",1],["Slime",2],["Slime",3],["Slime",4],["Slime",5],
+			["Esqueleto",5],["Esqueleto",5.3],["Esqueleto",5.6],["Esqueleto",5.9],["Esqueleto",6.2]]
 	}
 }

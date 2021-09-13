@@ -7,14 +7,13 @@ func _process(_delta):
 		$Timer.set_paused(false)
 	
 func _on_Timer_timeout():
-	if anim_free:
-		anim_free = false
+	if is_atacking:
 		animated_sprite.play("attack")
 	pass # Replace with function body.
 
 func _on_Torre_animation_finished():
 	if animated_sprite.animation == "attack":
-		anim_free = true
+		is_atacking = true
 		$Leche.show()
 		animated_sprite.play("idle")
 

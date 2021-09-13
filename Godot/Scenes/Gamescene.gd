@@ -7,9 +7,10 @@ var build_valid = false
 var build_tile
 var build_location
 var build_type
-
 var current_wave = 0
 var enemies_in_wave = 0
+var needed_score = 0
+var game_started = false
 
 func _ready():
 	map_node = get_node("Map1")
@@ -21,9 +22,10 @@ func _ready():
 func _process(_delta):
 	if build_mode:
 		update_tower_preview()
-	if(get_node("Map1/Path").get_child_count() == 0 and current_wave != 1):
-		print(current_wave)
-		#start_next_wave()
+	#print(Data.player["Player"]["game_over"])
+
+	if(needed_score == Data.player["Player"]["score"] and current_wave != 10 and game_started):
+		start_next_wave()
 	
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
@@ -42,9 +44,14 @@ func start_next_wave():
 	spawn_enemies(wave_data)
 
 func retrieve_wave_data():
-	current_wave += 1
+	print(current_wave)
+	#Sale error aqui al final porque llega al limite de waves, alrato lo movemos jeje
+	for i in Data.wave["Wave"+str(current_wave)]["wave"]:
+		needed_score += Data.enemigos[i[0]]["score"]	
 	var wave_data = Data.wave["Wave"+str(current_wave)]["wave"]	
 	enemies_in_wave = wave_data.size()
+	game_started = true
+	current_wave += 1
 	return wave_data
 
 func spawn_enemies(wave_data):
@@ -52,6 +59,7 @@ func spawn_enemies(wave_data):
 		var new_enemy = load("res://Scenes/Enemigos/" + i[0] + ".tscn").instance() 
 		map_node.get_node("Path").add_child(new_enemy, true)
 		yield(get_tree().create_timer(i[1]),"timeout")
+
 
 
 ##
