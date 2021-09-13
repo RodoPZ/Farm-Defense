@@ -1,7 +1,25 @@
-extends RigidBody2D
+extends KinematicBody2D
 
-var projectile_speed = 300
-""""
-func _ready():
-	apply_impulse(Vector2(),Vector2(projectile_speed,0).rotated(rotation))
-"""
+export (int) var speed = 50
+var target = Vector2()
+var velocity = Vector2()
+var turret_type
+var wr
+
+func init(targetpos,type):
+	target = targetpos
+	turret_type = type
+	wr = weakref(target)
+
+func _physics_process(delta):
+	if (wr.get_ref()):
+		velocity = position.direction_to(target.position) * speed
+		if position.distance_to(target.position) > 5:
+			velocity = move_and_slide(velocity)
+	else:
+		queue_free()		
+		
+func _on_Area2D_body_entered(body):
+	target.on_hit(Data.tower_data[turret_type]["damage"])
+	queue_free()
+
