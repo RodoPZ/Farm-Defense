@@ -11,16 +11,16 @@ func on_new_game_pressed():
 	get_node("MainMenu").queue_free()
 	game_scene = load("res://Scenes/Gamescene.tscn").instance()
 	add_child(game_scene)
-	
+
 func _process(_delta):
 	if Data.player["Player"]["game_over"]:
 		$MainMenu.hide()
 		$GameOver.show()
-	
+
 	#if $GameOver.visible:
 		#unhandled_input(event)
 		#game_scene = load("res://Scenes/UI/GameOver.tscn").instance()
-	
+
 func _unhandled_input(event):
 	if event.is_action_released("restart") and $GameOver.visible:
 		$MainMenu.show()

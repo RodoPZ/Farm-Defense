@@ -31,7 +31,7 @@ func on_hit(damage):
 	health_bar.value = hp
 	if hp <= 0:
 		on_destroy()
-		#NOTA solo para slime, generalizar
-		Data.player["Player"]["score"] += Data.enemigos["Slime"]["score"]
+		#NOTA solo para slime, generalizar #Listones 
+		Data.player["Player"]["score"] += Data.enemigos[tower_name]["score"]
 func on_destroy():
 	self.queue_free()

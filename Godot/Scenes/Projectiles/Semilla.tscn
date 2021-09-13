@@ -4,7 +4,7 @@
 [ext_resource path="res://Scenes/Projectiles/Semilla.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6, 0 )
+extents = Vector2( 3, 1 )
 
 [node name="Semilla" type="KinematicBody2D"]
 z_index = 1
@@ -15,6 +15,7 @@ script = ExtResource( 2 )
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 5, 0 )
 shape = SubResource( 1 )
 
 [node name="bala" type="Sprite" parent="."]

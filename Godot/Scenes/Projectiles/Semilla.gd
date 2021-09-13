@@ -14,6 +14,7 @@ func init(targetpos,type):
 func _physics_process(_delta):
 	if (wr.get_ref()):
 		velocity = position.direction_to(target.position) * speed
+		look_at(target.position)
 		if position.distance_to(target.position) > 5:
 			velocity = move_and_slide(velocity)
 	else:
