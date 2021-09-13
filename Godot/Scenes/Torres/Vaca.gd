@@ -9,4 +9,10 @@ func _on_Timer_timeout():
 func _on_Torre_animation_finished():
 	if animated_sprite.animation == "attack":
 		anim_free = true
+		$Leche.show()
 		animated_sprite.play("idle")
+
+
+func _on_Leche_pressed():
+	Data.player["Player"]["leche"] += 1
+	$Leche.hide()
