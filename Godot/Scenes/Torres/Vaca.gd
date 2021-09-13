@@ -1,6 +1,6 @@
 extends "res://Scenes/Torres/Torres.gd"
 
-func _process(delta):
+func _process(_delta):
 	if Data.player["Player"]["paused"]:
 		$Timer.set_paused(true)
 	else:

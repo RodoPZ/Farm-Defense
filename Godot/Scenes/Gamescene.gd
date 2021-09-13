@@ -26,7 +26,6 @@ func _process(_delta):
 
 	if(needed_score == Data.player["Player"]["score"] and current_wave != 10 and game_started):
 		start_next_wave()
-		
 	
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
