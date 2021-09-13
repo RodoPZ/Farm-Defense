@@ -1,9 +1,9 @@
 extends Node2D
+
 var spell = preload("res://Scenes/Projectiles/Semilla.tscn")
 var mover = false	
 var pos_actual = self.position
 var anim_free = true
-
 var type
 var enemy_array = []
 var built = false
@@ -31,7 +31,6 @@ func _physics_process(_delta):
 		select_enemy()
 		turn()
 		if ready:
-			bullet()
 			fire()
 	else:
 		enemy = null
@@ -48,17 +47,17 @@ func select_enemy():
 	var enemy_index = enemy_progress_array.find(max_offset)
 	enemy = enemy_array[enemy_index]
 
+
 func fire():
 	ready = false
-	enemy.on_hit(Data.tower_data[type]["damage"])
+	var spell_instance = spell.instance()
+	spell_instance.init(enemy_array[0],type)
+	spell_instance.position = get_global_position()
+	spell_instance.rotation = get_angle_to(enemy.position)
+	get_parent().get_parent().add_child(spell_instance)
 	yield(get_tree().create_timer(Data.tower_data[type]["rof"]), "timeout")
 	ready = true
 
-func bullet():
-	var spell_instance = spell.instance()
-	spell_instance.position = enemy.position
-	#spell_instance.rotation = get_angle_to(enemy.position)
-	get_parent().get_parent().add_child(spell_instance)
 
 # si body se usa quitar el underscore
 func _on_Rango_body_entered(body):
@@ -70,7 +69,6 @@ func _on_Rango_body_exited(body):
 	mover = false
 	#print("idle")
 	if anim_free == true:
-		anim_free = false
 		animated_sprite.play("idle")
 
 func _on_Derecha_body_entered(_body):

@@ -95,9 +95,3 @@ func verify_and_build():
 		map_node.get_node("AllowedTorres").set_cellv(build_tile, 7)
 		#deduct cash
 		#update cash label
-
-
-
-
-
-

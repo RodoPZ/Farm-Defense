@@ -106,7 +106,7 @@
 
 [sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 88, 160, 0, 0, 0, 0, 88, 88, 0, 0, 0, 0, 216, 88, 0, 0, 0, 0, 216, -16 )
+"points": PoolVector2Array( 0, 0, 0, 0, 40, 160, 0, 0, 0, 0, 40, 88, 0, 0, 0, 0, 168, 88, 0, 0, 0, 0, 168, -14 )
 }
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -135,7 +135,6 @@ tile_data = PoolIntArray( 65542, 8, 0, 131078, 8, 0, 131079, 8, 0, 131080, 8, 0,
 [node name="Torres" type="Node2D" parent="."]
 
 [node name="Path" type="Path2D" parent="."]
-position = Vector2( -48, 0 )
 curve = SubResource( 2 )
 
 [node name="GameOver" type="Area2D" parent="."]
