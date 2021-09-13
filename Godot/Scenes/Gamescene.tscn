@@ -17,6 +17,31 @@
 [ext_resource path="res://Assets/Font/Fuente.TTF" type="DynamicFontData" id=15]
 [ext_resource path="res://Scenes/HPLabel.gd" type="Script" id=16]
 
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 6 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ SubResource( 9 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "Pushed",
+"speed": 5.0
+} ]
+
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 16, 16 )
@@ -50,31 +75,6 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 6 )
-region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="SpriteFrames" id=10]
-animations = [ {
-"frames": [ SubResource( 9 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 7 ), SubResource( 8 ) ],
-"loop": true,
-"name": "Pushed",
-"speed": 5.0
-} ]
-
 [sub_resource type="DynamicFont" id=11]
 size = 17
 outline_size = 1
@@ -97,7 +97,6 @@ font_data = ExtResource( 15 )
 script = ExtResource( 10 )
 
 [node name="Map1" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, 0.280609 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource( 5 )
@@ -109,6 +108,13 @@ mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Salir_Sprite" type="AnimatedSprite" parent="UI/HUD"]
+visible = false
+position = Vector2( 187.207, 8.1038 )
+frames = SubResource( 10 )
+animation = "Pushed"
+offset = Vector2( -32, -8 )
 
 [node name="Score" type="VBoxContainer" parent="UI/HUD"]
 margin_right = 256.0
@@ -162,13 +168,6 @@ texture_pressed = SubResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Salir_Sprite" type="AnimatedSprite" parent="UI/HUD/Buttons/accel"]
-visible = false
-position = Vector2( 32, 8 )
-frames = SubResource( 10 )
-animation = "Pushed"
-offset = Vector2( -32, -8 )
 
 [node name="Buildbar" type="Control" parent="UI/HUD"]
 anchor_left = 1.0

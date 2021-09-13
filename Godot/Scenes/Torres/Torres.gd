@@ -63,33 +63,27 @@ func fire():
 func _on_Rango_body_entered(body):
 	enemy_array.append(body.get_parent())
 	mover = true
-	#print(enemy_array)
 func _on_Rango_body_exited(body):
 	enemy_array.erase(body.get_parent())
 	mover = false
-	#print("idle")
 	if anim_free == true:
 		animated_sprite.play("idle")
 
 func _on_Derecha_body_entered(_body):
-	#print("Sprite_Derecha")
 	if anim_free == true:
 		anim_free = false
 		animated_sprite.flip_h = false
 		animated_sprite.play("attack_right")
 func _on_Abajo_body_entered(_body):
-	#print("Sprite_Abajo")
 	if anim_free == true:
 		anim_free = false
 		animated_sprite.play("attack_down")
 func _on_Izquierda_body_entered(_body):
-	#print("Sprite_Izquierda")
 	if anim_free == true:
 		anim_free = false
 		animated_sprite.flip_h = true
 		animated_sprite.play("attack_right")
 func _on_Arriba_body_entered(_body):
-	#print("Sprite_Arriba")
 	if anim_free == true:
 		anim_free = false
 		animated_sprite.play("attack_up")
