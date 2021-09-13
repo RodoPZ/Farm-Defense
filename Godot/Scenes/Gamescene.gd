@@ -22,7 +22,9 @@ func _process(_delta):
 	if build_mode:
 		update_tower_preview()
 	#print(Data.player["Player"]["game_over"])
-		
+	if(get_node("Map1/Path").get_child_count() == 0 and current_wave != 1):
+		print(current_wave)
+		start_next_wave()
 	
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
@@ -34,14 +36,15 @@ func _unhandled_input(event):
 ##
 ### Funciones de oleadas ###
 ##
+
 func start_next_wave():
 	var wave_data = retrieve_wave_data()
 	yield(get_tree().create_timer(0.2),"timeout") ##Tiempo entre oleadas para que no comiencen instantaneamente
 	spawn_enemies(wave_data)
 
 func retrieve_wave_data():
-	var wave_data = [["Slime",2],["Slime",3],["Slime",4],["Slime",5],["Slime",6]]
 	current_wave += 1
+	var wave_data = Data.wave["Wave"+str(current_wave)]["wave"]	
 	enemies_in_wave = wave_data.size()
 	return wave_data
 
