@@ -1,6 +1,6 @@
 extends PathFollow2D
 var tower_type = null
-var speed = 10
+var speed = 30
 var hp = 50
 onready var animated_sprite : AnimatedSprite = get_node("KinematicBody2D/Enemigo")
 onready var health_bar = get_node("HealthBar")
@@ -27,6 +27,7 @@ func on_hit(damage):
 	health_bar.value = hp
 	if hp <= 0:
 		on_destroy()
-		
+		#NOTA solo para slime, generalizar
+		Data.player["Player"]["score"] += Data.enemigos["Slime"]["score"]
 func on_destroy():
 	self.queue_free()
