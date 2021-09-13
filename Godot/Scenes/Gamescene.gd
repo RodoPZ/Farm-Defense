@@ -21,6 +21,7 @@ func _ready():
 func _process(_delta):
 	if build_mode:
 		update_tower_preview()
+	#print(Data.player["Player"]["game_over"])
 		
 	
 func _unhandled_input(event):

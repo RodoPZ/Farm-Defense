@@ -1,10 +1,12 @@
 extends Node
 
 var player = {
-	"Score": 0,
-	"Milk": 0,
-	"HP": 0,
-	"Game_Over": false	
+	"Player": {
+	"score": 0,
+	"leche": 0,
+	"hp": 3,
+	"game_over": false	
+	}
 }
 
 var tower_data = {
@@ -36,14 +38,21 @@ var tower_data = {
 	}
 
 var enemigos ={
+	"Slime":{
+	"speed": 30,
+	"hp": 5,
+	"score": 1
+	},
+	
 	"Esqueleto":{
 	"speed": 14,
-	"hp": 5},
+	"hp": 5,
+	"score": 5
+	},
 	
 	"Ogro":{
 	"speed": 4,
-	"hp": 5},
-	
-	"Slime":{
-	"speed": 8,
-	"hp": 5}}
+	"hp": 5,
+	"score": 20
+	}
+	}
