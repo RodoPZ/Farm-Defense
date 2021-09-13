@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Assets/GUI/Boton_pause.png" type="Texture" id=1]
 [ext_resource path="res://Assets/GUI/Interfaz.png" type="Texture" id=2]
@@ -12,6 +12,10 @@
 [ext_resource path="res://Scenes/Gamescene.gd" type="Script" id=10]
 [ext_resource path="res://Assets/Sprites/Vaca.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Sprites/Pollo.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/ScoreLabel.gd" type="Script" id=13]
+[ext_resource path="res://Scenes/MilkLabel.gd" type="Script" id=14]
+[ext_resource path="res://Assets/Font/Fuente.TTF" type="DynamicFontData" id=15]
+[ext_resource path="res://Scenes/HPLabel.gd" type="Script" id=16]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
@@ -26,23 +30,23 @@ atlas = ExtResource( 1 )
 region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 4 )
-region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 16, 16 )
 
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 4 )
+region = Rect2( 16, 0, 16, 16 )
+
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 4 ) ],
-"loop": true,
-"name": "Pushed",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 5 ), SubResource( 3 ) ],
+"frames": [ SubResource( 4 ), SubResource( 3 ) ],
 "loop": true,
 "name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 1 ), SubResource( 5 ) ],
+"loop": true,
+"name": "Pushed",
 "speed": 5.0
 } ]
 
@@ -60,16 +64,34 @@ region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=10]
 animations = [ {
-"frames": [ SubResource( 7 ), SubResource( 8 ) ],
-"loop": true,
-"name": "Pushed",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 9 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "Pushed",
+"speed": 5.0
 } ]
+
+[sub_resource type="DynamicFont" id=11]
+size = 17
+outline_size = 1
+outline_color = Color( 0.937255, 0.960784, 0.960784, 1 )
+font_data = ExtResource( 15 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 12
+outline_size = 1
+outline_color = Color( 0.937255, 0.960784, 0.960784, 1 )
+font_data = ExtResource( 15 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 12
+outline_size = 1
+outline_color = Color( 0.937255, 0.960784, 0.960784, 1 )
+font_data = ExtResource( 15 )
 
 [node name="Gamescene" type="Node2D"]
 script = ExtResource( 10 )
@@ -90,7 +112,7 @@ __meta__ = {
 
 [node name="Score" type="VBoxContainer" parent="UI/HUD"]
 margin_right = 256.0
-margin_bottom = 144.0
+margin_bottom = 180.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -104,9 +126,10 @@ mouse_filter = 2
 texture = ExtResource( 2 )
 
 [node name="Buttons" type="HBoxContainer" parent="UI/HUD"]
-margin_left = 144.0
-margin_right = 176.0
-margin_bottom = 16.0
+margin_left = 139.207
+margin_top = 0.103803
+margin_right = 171.207
+margin_bottom = 16.1038
 custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -240,6 +263,45 @@ stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ScoreLabel" type="Label" parent="UI/HUD"]
+margin_left = 80.0
+margin_right = 139.0
+margin_bottom = 17.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.235294, 0.243137, 0.4, 1 )
+text = "0123"
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MilkLabel" type="Label" parent="UI/HUD"]
+margin_left = 227.124
+margin_top = 3.93644
+margin_right = 266.124
+margin_bottom = 20.9364
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 0.235294, 0.243137, 0.4, 1 )
+text = "99"
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HPLabel" type="Label" parent="UI/HUD"]
+margin_left = 185.133
+margin_top = 3.76196
+margin_right = 225.133
+margin_bottom = 20.762
+custom_fonts/font = SubResource( 13 )
+custom_colors/font_color = Color( 0.235294, 0.243137, 0.4, 1 )
+text = "9"
+script = ExtResource( 16 )
 
 [connection signal="toggled" from="UI/HUD/Buttons/pause" to="UI" method="_on_pause_toggled"]
 [connection signal="toggled" from="UI/HUD/Buttons/accel" to="UI" method="_on_accel_toggled"]

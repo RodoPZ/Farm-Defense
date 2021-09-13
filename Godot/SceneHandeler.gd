@@ -1,10 +1,6 @@
 extends Node
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+var game_scene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,11 +9,27 @@ func _ready():
 
 func on_new_game_pressed():
 	get_node("MainMenu").queue_free()
-	var game_scene = load("res://Scenes/Gamescene.tscn").instance()
+	game_scene = load("res://Scenes/Gamescene.tscn").instance()
 	add_child(game_scene)
-
 	
-
+func _process(_delta):
+	if Data.player["Player"]["game_over"]:
+		$MainMenu.hide()
+		$GameOver.show()
+	
+	#if $GameOver.visible:
+		#unhandled_input(event)
+		#game_scene = load("res://Scenes/UI/GameOver.tscn").instance()
+	
+func _unhandled_input(event):
+	if event.is_action_released("restart") and $GameOver.visible:
+		$MainMenu.show()
+		$GameOver.hide()
+		Data.player["Player"]["score"] = 0
+		Data.player["Player"]["leche"] = 0
+		Data.player["Player"]["hp"] = 3
+		Data.player["Player"]["game_over"] = false
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

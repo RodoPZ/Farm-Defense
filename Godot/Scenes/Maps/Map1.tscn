@@ -106,7 +106,7 @@
 
 [sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 40, 160, 0, 0, 0, 0, 40, 88, 0, 0, 0, 0, 168, 88, 0, 0, 0, 0, 168, -14 )
+"points": PoolVector2Array( 0, 0, 0, 0, 40, 160, 0, 0, 0, 0, 40, 88, 0, 0, 0, 0, 168, 88, 0, 0, 0, 0, 168, -16 )
 }
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -141,7 +141,7 @@ curve = SubResource( 2 )
 script = ExtResource( 3 )
 
 [node name="GameOverArea" type="CollisionShape2D" parent="GameOver"]
-position = Vector2( 168, -4 )
+position = Vector2( 168, -16 )
 shape = SubResource( 3 )
 
 [connection signal="body_entered" from="GameOver" to="GameOver" method="_on_GameOver_body_entered"]
