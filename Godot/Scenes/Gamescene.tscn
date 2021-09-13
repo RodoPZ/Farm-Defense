@@ -17,88 +17,64 @@
 [ext_resource path="res://Assets/Font/Fuente.TTF" type="DynamicFontData" id=15]
 [ext_resource path="res://Scenes/HPLabel.gd" type="Script" id=16]
 
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 6 )
-region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="SpriteFrames" id=10]
-animations = [ {
-"frames": [ SubResource( 9 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 7 ), SubResource( 8 ) ],
-"loop": true,
-"name": "Pushed",
-"speed": 5.0
-} ]
-
 [sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=2]
-atlas = SubResource( 1 )
+atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 6 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "Pushed",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = SubResource( 5 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
 region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 4 )
 region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="SpriteFrames" id=6]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 4 ) ],
-"loop": true,
-"name": "Pushed",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 5 ), SubResource( 3 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-} ]
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 6 )
-region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 16, 16 )
-
 [sub_resource type="SpriteFrames" id=10]
 animations = [ {
-"frames": [ SubResource( 7 ), SubResource( 8 ) ],
-"loop": true,
-"name": "Pushed",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 9 ) ],
+"frames": [ SubResource( 8 ), SubResource( 7 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 5 ), SubResource( 9 ) ],
+"loop": true,
+"name": "Pushed",
+"speed": 5.0
 } ]
+
 [sub_resource type="DynamicFont" id=11]
 size = 17
 outline_size = 1
@@ -136,7 +112,7 @@ __meta__ = {
 [node name="Salir_Sprite" type="AnimatedSprite" parent="UI/HUD"]
 visible = false
 position = Vector2( 187.207, 8.1038 )
-frames = SubResource( 10 )
+frames = SubResource( 4 )
 animation = "Pushed"
 offset = Vector2( -32, -8 )
 
@@ -170,15 +146,15 @@ pause_mode = 2
 margin_right = 16.0
 margin_bottom = 16.0
 toggle_mode = true
-texture_normal = SubResource( 2 )
-texture_pressed = SubResource( 3 )
+texture_normal = SubResource( 6 )
+texture_pressed = SubResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="UI/HUD/Buttons/pause"]
 visible = false
-frames = SubResource( 6 )
+frames = SubResource( 10 )
 animation = "Pushed"
 
 [node name="accel" type="TextureButton" parent="UI/HUD/Buttons"]
@@ -187,8 +163,8 @@ margin_left = 16.0
 margin_right = 32.0
 margin_bottom = 16.0
 toggle_mode = true
-texture_normal = SubResource( 7 )
-texture_pressed = SubResource( 8 )
+texture_normal = SubResource( 2 )
+texture_pressed = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -21,10 +21,9 @@ func _ready():
 func _process(_delta):
 	if build_mode:
 		update_tower_preview()
-	#print(Data.player["Player"]["game_over"])
 	if(get_node("Map1/Path").get_child_count() == 0 and current_wave != 1):
 		print(current_wave)
-		start_next_wave()
+		#start_next_wave()
 	
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
