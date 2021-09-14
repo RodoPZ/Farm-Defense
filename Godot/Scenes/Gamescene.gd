@@ -39,7 +39,10 @@ func _unhandled_input(event):
 
 func start_next_wave():
 	var wave_data = retrieve_wave_data()
-	yield(get_tree().create_timer(0.2),"timeout") ##Tiempo entre oleadas para que no comiencen instantaneamente
+	$UI/Path2D/PathFollow2D/WaveLabel.visible = true
+	yield(get_tree().create_timer(5),"timeout") ##Tiempo entre oleadas para que no comiencen instantaneamente
+	$UI/Path2D/PathFollow2D/WaveLabel.text = "Wave " + str(current_wave)
+	$UI/Path2D/PathFollow2D/WaveLabel.visible = false
 	spawn_enemies(wave_data)
 
 func retrieve_wave_data():
@@ -114,3 +117,8 @@ func verify_and_build():
 		new_tower.type = build_type
 		map_node.get_node("Torres").add_child(new_tower,true)
 		map_node.get_node("TowerExclusion").set_cellv(build_tile, 11)
+
+
+
+
+

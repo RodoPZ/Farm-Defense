@@ -70,30 +70,30 @@ func turn():
 		print("izq")
 	"""
 	
-	if is_attacking == false and ready == false:
-		is_attacking = true
-		if (rot_actual > 45 and rot_actual < 135) or (rot_actual > -315 and rot_actual < -225):
+	#if is_attacking == false and ready == false:
+		#is_attacking = true
+		#if (rot_actual > 45 and rot_actual < 135) or (rot_actual > -315 and rot_actual < -225):
 		#print(rot_actual)
-			print("abajo")
+			#print("abajo")
 #		if is_attacking == false:
 #			is_attacking = true
 			#animated_sprite.play("attack_down")
-		elif (rot_actual > 135 and rot_actual < 225) or (rot_actual > -225 and rot_actual < -135):
+		#elif (rot_actual > 135 and rot_actual < 225) or (rot_actual > -225 and rot_actual < -135):
 		#print(rot_actual)
-			print("izquierda")
+			#print("izquierda")
 			#animated_sprite.flip_h = true
 #		if is_attacking == false:
 #			is_attacking = true
 			#animated_sprite.play("attack_right")
-		elif (rot_actual > 225 and rot_actual < 315) or (rot_actual > -135 and rot_actual < -45):
+		#elif (rot_actual > 225 and rot_actual < 315) or (rot_actual > -135 and rot_actual < -45):
 		#print(rot_actual)
-			print("arriba")
+			#print("arriba")
 #		if is_attacking == false:
 #			is_attacking = true
 			#animated_sprite.play("attack_down")
-		elif (rot_actual > 315 or rot_actual < 45) or (rot_actual > -45 or rot_actual < -315):
+		#elif (rot_actual > 315 or rot_actual < 45) or (rot_actual > -45 or rot_actual < -315):
 		#print(rot_actual)
-			print("derecha")
+			#print("derecha")
 #		if is_attacking == false:
 #			is_attacking = true
 			#animated_sprite.flip_h = false
