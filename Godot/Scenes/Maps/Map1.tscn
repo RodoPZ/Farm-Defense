@@ -105,7 +105,7 @@
 7/shapes = [  ]
 7/z_index = 0
 
-[sub_resource type="TileSet" id=4]
+[sub_resource type="TileSet" id=2]
 0/name = "tileset.png 0"
 0/texture = ExtResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
@@ -121,12 +121,12 @@
 0/shapes = [  ]
 0/z_index = 0
 
-[sub_resource type="Curve2D" id=2]
+[sub_resource type="Curve2D" id=3]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 40, 160, 0, 0, 0, 0, 40, 88, 0, 0, 0, 0, 168, 88, 0, 0, 0, 0, 168, -16 )
 }
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 8, 4 )
 
 [node name="Map1" type="Node2D"]
@@ -150,7 +150,7 @@ format = 1
 tile_data = PoolIntArray( 65542, 8, 0, 131078, 8, 0, 131079, 8, 0, 131080, 8, 0, 262156, 8, 0, 327692, 8, 0, 458762, 8, 0, 458765, 0, 65537 )
 
 [node name="TowerExclusion" type="TileMap" parent="."]
-tile_set = SubResource( 4 )
+tile_set = SubResource( 2 )
 cell_size = Vector2( 16, 16 )
 format = 1
 tile_data = PoolIntArray( 458762, 0, 0 )
@@ -161,13 +161,13 @@ tile_data = PoolIntArray( 458762, 0, 0 )
 position = Vector2( 160, 112 )
 
 [node name="Path" type="Path2D" parent="."]
-curve = SubResource( 2 )
+curve = SubResource( 3 )
 
 [node name="GameOver1" type="Area2D" parent="."]
 script = ExtResource( 3 )
 
 [node name="GameOverArea" type="CollisionShape2D" parent="GameOver1"]
 position = Vector2( 168, -16 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [connection signal="body_entered" from="GameOver1" to="GameOver1" method="_on_GameOver1_body_entered"]

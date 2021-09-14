@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Assets/GUI/Boton_pause.png" type="Texture" id=1]
 [ext_resource path="res://Assets/GUI/Interfaz.png" type="Texture" id=2]
@@ -16,78 +16,90 @@
 [ext_resource path="res://Scenes/MilkLabel.gd" type="Script" id=14]
 [ext_resource path="res://Assets/Font/Fuente.TTF" type="DynamicFontData" id=15]
 [ext_resource path="res://Scenes/HPLabel.gd" type="Script" id=16]
+[ext_resource path="res://Scenes/WaveLabel.gd" type="Script" id=17]
 
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 16, 16 )
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -16, 64, 0, 0, 0, 0, 512, 64 )
+}
 
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 16, 16 )
+[sub_resource type="DynamicFont" id=2]
+size = 34
+outline_size = 2
+outline_color = Color( 0.937255, 0.960784, 0.960784, 1 )
+font_data = ExtResource( 15 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 6 )
 region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 1 ) ],
+"frames": [ SubResource( 3 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"frames": [ SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
 "name": "Pushed",
 "speed": 5.0
 } ]
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=6]
-atlas = SubResource( 5 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 1 )
-region = Rect2( 16, 0, 16, 16 )
-
 [sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 1 )
+atlas = SubResource( 7 )
 region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 4 )
 region = Rect2( 16, 0, 16, 16 )
 
-[sub_resource type="SpriteFrames" id=10]
+[sub_resource type="SpriteFrames" id=12]
 animations = [ {
-"frames": [ SubResource( 8 ), SubResource( 7 ) ],
+"frames": [ SubResource( 10 ), SubResource( 9 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 5 ), SubResource( 9 ) ],
+"frames": [ SubResource( 7 ), SubResource( 11 ) ],
 "loop": true,
 "name": "Pushed",
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=13]
 size = 17
 outline_size = 1
 outline_color = Color( 0.937255, 0.960784, 0.960784, 1 )
 font_data = ExtResource( 15 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=14]
 size = 12
 outline_size = 1
 outline_color = Color( 0.937255, 0.960784, 0.960784, 1 )
 font_data = ExtResource( 15 )
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=15]
 size = 12
 outline_size = 1
 outline_color = Color( 0.937255, 0.960784, 0.960784, 1 )
@@ -101,6 +113,25 @@ script = ExtResource( 10 )
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource( 5 )
 
+[node name="Path2D" type="Path2D" parent="UI"]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="UI/Path2D"]
+position = Vector2( -16, 64 )
+
+[node name="WaveLabel" type="Label" parent="UI/Path2D/PathFollow2D"]
+visible = false
+margin_left = -168.0
+margin_top = -16.0
+margin_bottom = 18.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.137255, 0.137255, 0.180392, 1 )
+text = "Wave 1"
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="HUD" type="Control" parent="UI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -110,9 +141,8 @@ __meta__ = {
 }
 
 [node name="Salir_Sprite" type="AnimatedSprite" parent="UI/HUD"]
-visible = false
 position = Vector2( 187.207, 8.1038 )
-frames = SubResource( 4 )
+frames = SubResource( 6 )
 animation = "Pushed"
 offset = Vector2( -32, -8 )
 
@@ -146,15 +176,15 @@ pause_mode = 2
 margin_right = 16.0
 margin_bottom = 16.0
 toggle_mode = true
-texture_normal = SubResource( 6 )
-texture_pressed = SubResource( 7 )
+texture_normal = SubResource( 8 )
+texture_pressed = SubResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="UI/HUD/Buttons/pause"]
 visible = false
-frames = SubResource( 10 )
+frames = SubResource( 12 )
 animation = "Pushed"
 
 [node name="accel" type="TextureButton" parent="UI/HUD/Buttons"]
@@ -163,8 +193,8 @@ margin_left = 16.0
 margin_right = 32.0
 margin_bottom = 16.0
 toggle_mode = true
-texture_normal = SubResource( 2 )
-texture_pressed = SubResource( 3 )
+texture_normal = SubResource( 4 )
+texture_pressed = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -269,7 +299,7 @@ margin_right = 139.0
 margin_bottom = 17.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0.235294, 0.243137, 0.4, 1 )
 text = "0123"
 script = ExtResource( 13 )
@@ -284,7 +314,7 @@ margin_right = 266.124
 margin_bottom = 20.9364
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 0.235294, 0.243137, 0.4, 1 )
 text = "99"
 script = ExtResource( 14 )
@@ -297,10 +327,14 @@ margin_left = 185.133
 margin_top = 3.76196
 margin_right = 225.133
 margin_bottom = 20.762
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 0.235294, 0.243137, 0.4, 1 )
 text = "9"
 script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
+[connection signal="visibility_changed" from="UI/Path2D/PathFollow2D/WaveLabel" to="UI/Path2D/PathFollow2D/WaveLabel" method="_on_WaveLabel_visibility_changed"]
 [connection signal="toggled" from="UI/HUD/Buttons/pause" to="UI" method="_on_pause_toggled"]
 [connection signal="toggled" from="UI/HUD/Buttons/accel" to="UI" method="_on_accel_toggled"]
