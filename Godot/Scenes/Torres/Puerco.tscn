@@ -145,12 +145,12 @@ animations = [ {
 }, {
 "frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
 "loop": true,
-"name": "attack_down",
+"name": "attack_up",
 "speed": 6.0
 }, {
 "frames": [ SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ) ],
 "loop": true,
-"name": "attack_up",
+"name": "attack_down",
 "speed": 6.0
 } ]
 
@@ -164,32 +164,9 @@ script = ExtResource( 2 )
 position = Vector2( 8, 8 )
 frames = SubResource( 33 )
 animation = "idle"
-frame = 4
 playing = true
 
-[node name="Abajo" type="Area2D" parent="."]
-
-[node name="Abajo" type="CollisionPolygon2D" parent="Abajo"]
-position = Vector2( 8, 8 )
-polygon = PoolVector2Array( 0, 0, 24, 24, -24, 24 )
-
-[node name="Izquierda" type="Area2D" parent="."]
-
-[node name="Izquierda" type="CollisionPolygon2D" parent="Izquierda"]
-position = Vector2( 8, 8 )
-polygon = PoolVector2Array( 0, 0, -24, 24, -24, -24 )
-
-[node name="Arriba" type="Area2D" parent="."]
-
-[node name="Arriba" type="CollisionPolygon2D" parent="Arriba"]
-position = Vector2( 8, 8 )
-polygon = PoolVector2Array( 0, 0, -24, -24, 24, -24 )
-
-[node name="Derecha" type="Area2D" parent="."]
-
-[node name="Derecha" type="CollisionPolygon2D" parent="Derecha"]
-position = Vector2( 8, 8 )
-polygon = PoolVector2Array( 0, 0, 24, -24, 24, 24 )
+[node name="Position2D" type="Position2D" parent="Torre"]
 
 [node name="Rango" type="Area2D" parent="."]
 
@@ -198,9 +175,5 @@ position = Vector2( 8, 8 )
 shape = SubResource( 34 )
 
 [connection signal="animation_finished" from="Torre" to="." method="_on_Torre_animation_finished"]
-[connection signal="body_entered" from="Abajo" to="." method="_on_Abajo_body_entered"]
-[connection signal="body_entered" from="Izquierda" to="." method="_on_Izquierda_body_entered"]
-[connection signal="body_entered" from="Arriba" to="." method="_on_Arriba_body_entered"]
-[connection signal="body_entered" from="Derecha" to="." method="_on_Derecha_body_entered"]
 [connection signal="body_entered" from="Rango" to="." method="_on_Rango_body_entered"]
 [connection signal="body_exited" from="Rango" to="." method="_on_Rango_body_exited"]

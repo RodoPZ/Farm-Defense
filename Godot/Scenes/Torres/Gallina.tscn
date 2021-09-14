@@ -89,12 +89,12 @@ animations = [ {
 }, {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
-"name": "attack_down",
+"name": "attack_up",
 "speed": 8.0
 }, {
 "frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
 "loop": true,
-"name": "attack_up",
+"name": "attack_down",
 "speed": 8.0
 } ]
 
@@ -108,32 +108,9 @@ script = ExtResource( 2 )
 position = Vector2( 8, 8 )
 frames = SubResource( 19 )
 animation = "idle"
-frame = 1
 playing = true
 
-[node name="Abajo" type="Area2D" parent="."]
-position = Vector2( 8, 8 )
-
-[node name="Abajo" type="CollisionPolygon2D" parent="Abajo"]
-polygon = PoolVector2Array( 0, 0, 24, 24, -24, 24 )
-
-[node name="Izquierda" type="Area2D" parent="."]
-position = Vector2( 8, 8 )
-
-[node name="Izquierda" type="CollisionPolygon2D" parent="Izquierda"]
-polygon = PoolVector2Array( 0, 0, -24, 24, -24, -24 )
-
-[node name="Arriba" type="Area2D" parent="."]
-position = Vector2( 8, 8 )
-
-[node name="Arriba" type="CollisionPolygon2D" parent="Arriba"]
-polygon = PoolVector2Array( 0, 0, -24, -24, 24, -24 )
-
-[node name="Derecha" type="Area2D" parent="."]
-position = Vector2( 8, 8 )
-
-[node name="Derecha" type="CollisionPolygon2D" parent="Derecha"]
-polygon = PoolVector2Array( 0, 0, 24, -24, 24, 24 )
+[node name="Position2D" type="Position2D" parent="Torre"]
 
 [node name="Rango" type="Area2D" parent="."]
 position = Vector2( 8, 8 )
@@ -142,9 +119,5 @@ position = Vector2( 8, 8 )
 shape = SubResource( 20 )
 
 [connection signal="animation_finished" from="Torre" to="." method="_on_Torre_animation_finished"]
-[connection signal="body_entered" from="Abajo" to="." method="_on_Abajo_body_entered"]
-[connection signal="body_entered" from="Izquierda" to="." method="_on_Izquierda_body_entered"]
-[connection signal="body_entered" from="Arriba" to="." method="_on_Arriba_body_entered"]
-[connection signal="body_entered" from="Derecha" to="." method="_on_Derecha_body_entered"]
 [connection signal="body_entered" from="Rango" to="." method="_on_Rango_body_entered"]
 [connection signal="body_exited" from="Rango" to="." method="_on_Rango_body_exited"]
