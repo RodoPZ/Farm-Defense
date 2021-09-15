@@ -3,7 +3,7 @@ extends Node
 var player = {
 	"Player": {
 	"score": 0,
-	"leche": 99,
+	"leche": 2,
 	"hp": 3,
 	"game_over": false,
 	"paused": true
@@ -12,7 +12,7 @@ var player = {
 
 var tower_data = {
 	"Pollo": {
-	"damage": 1,
+	"damage": 3,
 	"rof": 1,
 	"range": 4,
 	"price": 1},
@@ -30,8 +30,8 @@ var tower_data = {
 	"price": 1},
 	
 	"Cabra":{
-	"damage": 1,
-	"rof": .2,
+	"damage": 10,
+	"rof": 1,
 	"range": 3,
 	"price": 1},
 	
@@ -39,26 +39,26 @@ var tower_data = {
 	"damage": 0,
 	"rof": 1,
 	"range": 0,
-	"drop_time": 20,
+	"drop_time": 30,
 	"price": 1}
 	}
 
 var enemigos ={
 	"Slime":{
-	"speed": 15,
-	"hp": 10,
+	"speed": 8,
+	"hp": 20,
 	"score": 1
 	},
 	
 	"Esqueleto":{
-	"speed": 14,
-	"hp": 5,
+	"speed": 30,
+	"hp": 8,
 	"score": 5
 	},
 	
 	"Ogro":{
 	"speed": 4,
-	"hp": 20,
+	"hp": 80,
 	"score": 20
 	}
 	}
@@ -78,4 +78,20 @@ var wave={
 	"wave": [["Slime",1],["Slime",2],["Slime",3],["Slime",4],["Slime",5],
 			["Esqueleto",5],["Esqueleto",5.3],["Esqueleto",5.6],["Esqueleto",5.9],["Esqueleto",6.2]]
 	}
+}
+
+var wave_data = {
+	#Que los ratios de enemigos igualen 1
+	"Map1":{
+		"dificultad": 1,
+		"ratio_crec_wave": 2,
+		"ratio_slime": .5,
+		"ratio_esqueleto": .3,
+		"ratio_ogro": .2,
+		"prob_super_slimes": .1,
+		"prob_super_esqueletos": .2,
+		"prob_super_ogros": .1,
+		"max_enemigos": 999,
+		"var_num_enemies": .4
+		}
 }
