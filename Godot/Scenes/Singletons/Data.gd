@@ -66,7 +66,7 @@ var enemigos ={
 var wave={
 	#No poner tiempo en 0 porque le da amnsiedad
 	"Wave1":{
-	"wave": [["Slime",1],["Slime",2]]
+	"wave": [["Ogro",1]]
 	},
 	"Wave2":{
 	"wave": [["Slime",1],["Slime",2],["Slime",3],["Slime",4],["Slime",5]]
