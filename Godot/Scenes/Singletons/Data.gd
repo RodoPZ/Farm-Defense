@@ -69,7 +69,7 @@ var wave={
 	"wave": [["Slime",1],["Slime",2]]
 	},
 	"Wave2":{
-	"wave": [["Slime",1],["Slime",1],["Slime",2],["Slime",3],["Slime",4]]
+	"wave": [["Slime",1],["Slime",2],["Slime",3],["Slime",4],["Slime",5]]
 	},
 	"Wave3":{
 	"wave": [["Esqueleto",1],["Esqueleto",1.3],["Esqueleto",1.6],["Esqueleto",1.9],["Esqueleto",1.2]]
