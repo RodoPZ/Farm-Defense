@@ -87,7 +87,6 @@ script = ExtResource( 2 )
 position = Vector2( 8, 8 )
 frames = SubResource( 16 )
 animation = "idle"
-frame = 2
 playing = true
 
 [node name="Rango" type="Area2D" parent="."]
@@ -97,7 +96,7 @@ position = Vector2( 8, 8 )
 shape = SubResource( 17 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 10.0
 autostart = true
 
 [node name="Leche" type="TextureButton" parent="."]

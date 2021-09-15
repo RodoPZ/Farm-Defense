@@ -80,7 +80,7 @@ func turn():
 			#animated_sprite.flip_h = false
 			#animated_sprite.play("attack_right")
 func animate():
-	print(	fmod(animated_sprite.get_rotation_degrees(),360))
+	#(	fmod(animated_sprite.get_rotation_degrees(),360))
 	if ready == false:
 		is_attacking = true
 		if 45<animated_sprite.get_rotation_degrees() and animated_sprite.get_rotation_degrees()<135:
