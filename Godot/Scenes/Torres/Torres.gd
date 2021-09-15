@@ -37,31 +37,13 @@ func _physics_process(_delta):
 		enemy = null
 
 func turn():
-	get_node("Torre").look_at(enemy.position)
-	rot_actual = fmod(animated_sprite.get_rotation_degrees(),360)
+	#get_node("Torre").look_at(enemy.position)
+	get_node("Torre").look_at(get_global_mouse_position())
+	animate()
+
 	
-	#(animated_sprite.get_rotation_degrees())
+
 	"""
-	if 90 < animated_sprite.get_rotation_degrees() and animated_sprite.get_rotation_degrees() < 270:
-		if animated_sprite.is_flipped_v() == false:
-			animated_sprite.flip_v = true
-		if ready == false:
-			animated_sprite.play("attack_right")
-			is_attacking = true
-		else:
-			animated_sprite.play("idle")
-	elif -90<animated_sprite.get_rotation_degrees() and animated_sprite.get_rotation_degrees()<90:
-		if animated_sprite.is_flipped_v() == true:
-			animated_sprite.flip_v = false
-		if ready == false:
-			animated_sprite.play("attack_right")
-			is_attacking = true
-		else:
-			animated_sprite.play("idle")
-	else: 
-		if animated_sprite.is_flipped_v() == true:
-			animated_sprite.flip_v = false
-	
 	if 	not animated_sprite.flip_v and not animated_sprite.flip_h:
 		print("arriba")
 	elif animated_sprite.flip_v and not animated_sprite.flip_h:
@@ -69,7 +51,6 @@ func turn():
 	elif not animated_sprite.flip_v and animated_sprite.flip_h:
 		print("izq")
 	"""
-	
 	#if is_attacking == false and ready == false:
 		#is_attacking = true
 		#if (rot_actual > 45 and rot_actual < 135) or (rot_actual > -315 and rot_actual < -225):
@@ -98,6 +79,34 @@ func turn():
 #			is_attacking = true
 			#animated_sprite.flip_h = false
 			#animated_sprite.play("attack_right")
+func animate():
+	print(	fmod(animated_sprite.get_rotation_degrees(),360))
+	if ready == false:
+		is_attacking = true
+		if 45<animated_sprite.get_rotation_degrees() and animated_sprite.get_rotation_degrees()<135:
+			animated_sprite.play("attack_down")
+			if animated_sprite.is_flipped_v() == true:
+				animated_sprite.flip_v = false
+		elif 135 < animated_sprite.get_rotation_degrees() and animated_sprite.get_rotation_degrees() < 225:
+			animated_sprite.play("attack_right")
+			if animated_sprite.is_flipped_v() == false:
+				animated_sprite.flip_v = true
+		if -135<animated_sprite.get_rotation_degrees() and animated_sprite.get_rotation_degrees()<-45:
+			animated_sprite.play("attack_up")
+			if animated_sprite.is_flipped_v() == true:
+				animated_sprite.flip_v = false
+		elif -45<animated_sprite.get_rotation_degrees() and animated_sprite.get_rotation_degrees()<45:
+			animated_sprite.play("attack_right")
+			if animated_sprite.is_flipped_v() == true:
+				animated_sprite.flip_v = false	
+		else:
+			if animated_sprite.is_flipped_v() == true:
+				animated_sprite.flip_v = false	 
+	else:
+		animated_sprite.play("idle")
+
+
+
 
 func select_enemy():
 	var enemy_progress_array = []
@@ -127,9 +136,9 @@ func _on_Rango_body_entered(body):
 func _on_Rango_body_exited(body):
 	enemy_array.erase(body.get_parent())
 	mover = false
+	animated_sprite.set_rotation_degrees(0)
 	if is_attacking == false:
 		animated_sprite.play("idle")
-		animated_sprite.set_rotation_degrees(0)
 	if animated_sprite.is_flipped_v() == true:
 		animated_sprite.flip_v = false
 
