@@ -14,8 +14,6 @@ var game_started = false
 var num_enemigos: int
 var rng
 
-
-
 func _ready():
 	randomize()
 	map_node = get_node("Map1")
@@ -27,13 +25,7 @@ func _ready():
 func _process(_delta):
 	if build_mode:
 		update_tower_preview()
-	
-	#Por alguna razón a veces score se vuelve mayor que needed_score y se desfasan las oleadas, si se encuentra el fallo quitar esto
-	if needed_score < Data.player["Player"]["score"]:
-		#print("xd")
-		needed_score += Data.player["Player"]["score"] - needed_score
-
-	#if(needed_score == Data.player["Player"]["score"] and current_wave != 10 and game_started):
+		
 	if(needed_score == Data.player["Player"]["score"] and game_started):
 		start_next_wave()
 	
@@ -196,8 +188,3 @@ func verify_and_build():
 		new_tower.type = build_type
 		map_node.get_node("Torres").add_child(new_tower,true)
 		map_node.get_node("TowerExclusion").set_cellv(build_tile, 11)
-
-
-
-
-
