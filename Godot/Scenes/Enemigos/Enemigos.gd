@@ -39,7 +39,12 @@ func on_destroy():
 	get_node("KinematicBody2D").set_collision_layer_bit(0,false)
 	get_node("KinematicBody2D").set_collision_mask_bit(0,false)
 	animated_sprite.play("death")
+	get_node("HealthBar").visible = false
 
 func _on_Enemigo_animation_finished():
+<<<<<<< Updated upstream
+=======
+	#print("finished")
+>>>>>>> Stashed changes
 	if is_dead == true:
 		queue_free()
