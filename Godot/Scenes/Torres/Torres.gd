@@ -2,13 +2,11 @@ extends Node2D
 
 var spell = preload("res://Scenes/Projectiles/Semilla.tscn")
 var rot_actual
-var is_attacking
 var type
 var enemy_array = []
 var built = false
 var enemy
 var ready = true
-
 
 #var nombre = ""
 onready var animated_sprite : AnimatedSprite = get_node("Torre")
@@ -21,7 +19,6 @@ func _ready():
 		self.get_node("Rango/CollisionShape2D").get_shape().extents = 8*Vector2(Data.tower_data[type]["range"],Data.tower_data[type]["range"])
 		animated_sprite.speed_scale = Data.tower_data[type]["rof"]
 
-
 ##
 ## Rotación de sprites
 #Si se usa delta quitar undescore
@@ -32,17 +29,18 @@ func _physics_process(_delta):
 		if ready:
 			fire()
 	else:
+		animate_idle()
 		enemy = null
+		
 
 func turn():
 	get_node("Torre").look_at(enemy.position)
-	#get_node("Torre").look_at(get_global_mouse_position())
 	animate()
 
 func animate():
 	rot_actual = fmod(animated_sprite.get_rotation_degrees(),360)
+	print(ready)
 	if ready == false:
-		is_attacking = true
 		if (45<rot_actual and rot_actual<135) or (-315<rot_actual and rot_actual <-225):
 			animated_sprite.play("attack_down")
 			if animated_sprite.is_flipped_v() == true:
@@ -59,11 +57,15 @@ func animate():
 			animated_sprite.play("attack_right")
 			if animated_sprite.is_flipped_v() == true:
 				animated_sprite.flip_v = false	
-	else:
-		is_attacking = false
-		animated_sprite.play("idle")
+	else: 
+		animate_idle()
 
-
+func animate_idle():
+	animated_sprite.set_rotation_degrees(0)
+	animated_sprite.play("idle")
+	if animated_sprite.is_flipped_v() == true:
+		animated_sprite.flip_v = false
+		
 func select_enemy():
 	var enemy_progress_array = []
 	for i in enemy_array:
@@ -82,7 +84,7 @@ func fire():
 	get_parent().get_parent().add_child(spell_instance)
 	yield(get_tree().create_timer(Data.tower_data[type]["rof"]), "timeout")
 	ready = true
-
+	
 
 # si body se usa quitar el underscore
 func _on_Rango_body_entered(body):
@@ -90,12 +92,3 @@ func _on_Rango_body_entered(body):
 	
 func _on_Rango_body_exited(body):
 	enemy_array.erase(body.get_parent())
-	animated_sprite.set_rotation_degrees(0)
-	if is_attacking == false:
-		animated_sprite.play("idle")
-	if animated_sprite.is_flipped_v() == true:
-		animated_sprite.flip_v = false
-
-
-func _on_Torre_animation_finished():
-		is_attacking = false

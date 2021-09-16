@@ -1,5 +1,5 @@
 extends "res://Scenes/Torres/Torres.gd"
-
+var is_attacking = false
 func _process(_delta):
 	if Data.player["Player"]["paused"]:
 		$Timer.set_paused(true)
