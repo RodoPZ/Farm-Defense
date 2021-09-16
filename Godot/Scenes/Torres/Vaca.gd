@@ -1,4 +1,5 @@
 extends "res://Scenes/Torres/Torres.gd"
+var is_attacking = false
 
 func _ready():
 	$Timer.wait_time = Data.tower_data["Vaca"]["drop_time"]
