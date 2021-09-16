@@ -3,7 +3,7 @@ extends Node
 var player = {
 	"Player": {
 	"score": 0,
-	"leche": 2,
+	"leche": 99,
 	"hp": 3,
 	"game_over": false,
 	"paused": true
@@ -18,7 +18,7 @@ var tower_data = {
 	"price": 1},
 	
 	"Gallina":{
-	"damage": 1,
+	"damage": 4,
 	"rof": 1,
 	"range": 4,
 	"price": 2},

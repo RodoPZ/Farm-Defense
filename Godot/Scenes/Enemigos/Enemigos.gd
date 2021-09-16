@@ -2,6 +2,7 @@ extends PathFollow2D
 var tower_type = null
 var tower_name = ""
 var speed = 0
+var is_dead = false
 var hp = 50
 onready var animated_sprite : AnimatedSprite = get_node("KinematicBody2D/Enemigo")
 onready var health_bar = get_node("HealthBar")
@@ -20,11 +21,10 @@ func _ready():
 
 
 func _physics_process(delta):
-	move(delta)
-
-func move(delta):
-	set_offset(get_offset() + speed * delta)
-	#health_bar.set_position(position - Vector2(17,6))
+	if is_dead == false:
+		set_offset(get_offset() + speed * delta)
+	else:
+		set_offset(get_offset() + 0 * delta)
 
 func on_hit(damage):
 	hp -= damage
@@ -33,5 +33,14 @@ func on_hit(damage):
 		on_destroy()
 		#NOTA solo para slime, generalizar #Listones 
 		Data.player["Player"]["score"] += Data.enemigos[tower_name]["score"]
+		
 func on_destroy():
-	self.queue_free()
+	is_dead = true
+	get_node("KinematicBody2D").set_collision_layer_bit(0,false)
+	get_node("KinematicBody2D").set_collision_mask_bit(0,false)
+	animated_sprite.play("death")
+
+func _on_Enemigo_animation_finished():
+	print("finished")
+	if is_dead == true:
+		queue_free()
