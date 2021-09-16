@@ -21,6 +21,9 @@ func _physics_process(_delta):
 		queue_free()		
 		
 func _on_Area2D_body_entered(_body):
-	target.on_hit(Data.tower_data[turret_type]["damage"])
-	queue_free()
+	if (target.get_ref()):
+		target.on_hit(Data.tower_data[turret_type]["damage"])
+		queue_free()
+	else:
+		queue_free()
 
