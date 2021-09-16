@@ -1,5 +1,9 @@
 extends "res://Scenes/Torres/Torres.gd"
 var is_attacking = false
+
+func _ready():
+	$Timer.wait_time = Data.tower_data["Vaca"]["drop_time"]
+
 func _process(_delta):
 	if Data.player["Player"]["paused"]:
 		$Timer.set_paused(true)
@@ -18,7 +22,8 @@ func _on_Torre_animation_finished():
 		animated_sprite.play("idle")
 
 func _on_Leche_pressed():
-	Data.player["Player"]["leche"] += 1
+	if Data.player["Player"]["leche"] < 99:
+		Data.player["Player"]["leche"] += 1
 	$Leche.hide()
 	
 
