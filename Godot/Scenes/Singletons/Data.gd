@@ -18,7 +18,7 @@ var tower_data = {
 	"price": 1},
 	
 	"Gallina":{
-	"damage": 4,
+	"damage": 1,
 	"rof": 1,
 	"range": 4,
 	"price": 2},
@@ -31,7 +31,7 @@ var tower_data = {
 	
 	"Cabra":{
 	"damage": 10,
-	"rof": 1,
+	"rof": 5,
 	"range": 3,
 	"price": 1},
 	

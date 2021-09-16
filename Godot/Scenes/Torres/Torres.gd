@@ -7,7 +7,7 @@ var enemy_array = []
 var built = false
 var enemy
 var ready = true
-
+var atack_anim = true
 #var nombre = ""
 onready var animated_sprite : AnimatedSprite = get_node("Torre")
 #Comenté connect porque daba errores rodo (junto con todo el ready)
@@ -17,7 +17,7 @@ onready var animated_sprite : AnimatedSprite = get_node("Torre")
 func _ready():
 	if built:
 		self.get_node("Rango/CollisionShape2D").get_shape().extents = 8*Vector2(Data.tower_data[type]["range"],Data.tower_data[type]["range"])
-		animated_sprite.speed_scale = Data.tower_data[type]["rof"]
+		animated_sprite.speed_scale = 2
 
 ##
 ## Rotación de sprites
@@ -40,6 +40,7 @@ func turn():
 func animate():
 	rot_actual = fmod(animated_sprite.get_rotation_degrees(),360)
 	if ready == false:
+		atack_anim = true
 		if (45<rot_actual and rot_actual<135) or (-315<rot_actual and rot_actual <-225):
 			animated_sprite.play("attack_down")
 			if animated_sprite.is_flipped_v() == true:
