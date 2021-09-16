@@ -39,7 +39,6 @@ func turn():
 
 func animate():
 	rot_actual = fmod(animated_sprite.get_rotation_degrees(),360)
-	print(ready)
 	if ready == false:
 		if (45<rot_actual and rot_actual<135) or (-315<rot_actual and rot_actual <-225):
 			animated_sprite.play("attack_down")
@@ -92,3 +91,6 @@ func _on_Rango_body_entered(body):
 	
 func _on_Rango_body_exited(body):
 	enemy_array.erase(body.get_parent())
+
+
+	
