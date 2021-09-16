@@ -41,6 +41,5 @@ func on_destroy():
 	animated_sprite.play("death")
 
 func _on_Enemigo_animation_finished():
-	print("finished")
 	if is_dead == true:
 		queue_free()

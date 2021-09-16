@@ -31,50 +31,50 @@ region = Rect2( 176, 0, 16, 16 )
 atlas = ExtResource( 1 )
 region = Rect2( 192, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 1 )
 region = Rect2( 112, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 1 )
-region = Rect2( 128, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 1 )
-region = Rect2( 144, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
 region = Rect2( 64, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 1 )
 region = Rect2( 80, 0, 16, 16 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 1 )
 region = Rect2( 96, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 1 )
+region = Rect2( 144, 0, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=14]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "idle",
-"speed": 6.0
+"speed": 2.0
 }, {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
-"loop": true,
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 11 ) ],
+"loop": false,
 "name": "attack_down",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
-"loop": true,
-"name": "attack_up",
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 9 ), SubResource( 1 ) ],
+"loop": false,
+"name": "attack_right",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
-"loop": true,
-"name": "attack_right",
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 12 ), SubResource( 5 ) ],
+"loop": false,
+"name": "attack_up",
 "speed": 6.0
 } ]
 
@@ -88,8 +88,6 @@ script = ExtResource( 2 )
 position = Vector2( 8, 7.91161 )
 frames = SubResource( 14 )
 animation = "idle"
-frame = 2
-playing = true
 
 [node name="Position2D" type="Position2D" parent="Torre"]
 
