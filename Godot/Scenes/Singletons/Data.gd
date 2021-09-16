@@ -92,6 +92,7 @@ var wave_data = {
 		"prob_super_esqueletos": .2,
 		"prob_super_ogros": .1,
 		"max_enemigos": 999,
-		"var_num_enemies": .4
+		"var_num_enemies": .4,
+		"hp_inc_rate": .1
 		}
 }

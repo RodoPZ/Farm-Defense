@@ -35,22 +35,22 @@ region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 16, 16 )
+region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 6 )
-region = Rect2( 16, 0, 16, 16 )
+region = Rect2( 0, 0, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 3 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "Pushed",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ) ],
+"loop": true,
+"name": "Idle",
 "speed": 5.0
 } ]
 
@@ -67,23 +67,23 @@ atlas = ExtResource( 1 )
 region = Rect2( 16, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 16, 16 )
-
-[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 4 )
 region = Rect2( 16, 0, 16, 16 )
 
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 16, 16 )
+
 [sub_resource type="SpriteFrames" id=12]
 animations = [ {
-"frames": [ SubResource( 10 ), SubResource( 9 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 7 ), SubResource( 11 ) ],
+"frames": [ SubResource( 7 ), SubResource( 10 ) ],
 "loop": true,
 "name": "Pushed",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 11 ), SubResource( 9 ) ],
+"loop": true,
+"name": "Idle",
 "speed": 5.0
 } ]
 
@@ -193,8 +193,8 @@ margin_left = 16.0
 margin_right = 32.0
 margin_bottom = 16.0
 toggle_mode = true
-texture_normal = SubResource( 4 )
-texture_pressed = SubResource( 5 )
+texture_normal = SubResource( 3 )
+texture_pressed = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
