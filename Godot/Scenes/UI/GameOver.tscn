@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/GUI/Game_over.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sound/game_over.wav" type="AudioStream" id=2]
+[ext_resource path="res://Scenes/UI/GameOver.gd" type="Script" id=3]
 
 [node name="GameOver" type="Control"]
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -11,3 +14,12 @@ __meta__ = {
 margin_right = 40.0
 margin_bottom = 40.0
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicGameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[connection signal="draw" from="." to="." method="_on_GameOver_draw"]
+[connection signal="visibility_changed" from="." to="." method="_on_GameOver_visibility_changed"]

@@ -15,6 +15,7 @@ func select_enemy():
 
 func fire():
 	ready = false
+	attack_sound.play()
 	for i in enemy_array:
 		i.on_hit(Data.tower_data[type]["damage"])
 	yield(get_tree().create_timer(Data.tower_data[type]["rof"]), "timeout")
@@ -25,3 +26,7 @@ func _on_Rango_body_entered(body):
 	
 func _on_Rango_body_exited(body):
 	enemy_array.erase(body.get_parent())
+
+
+func _on_Gallina_tree_entered():
+	$SoundPick.play()
