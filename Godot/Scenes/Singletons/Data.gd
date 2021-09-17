@@ -30,7 +30,7 @@ var tower_data = {
 	"price": 3},
 	
 	"Puerco":{
-	"damage":0,
+	"damage":.5,
 	"rof": 2.5,
 	"range": 4,
 	"price": 3},

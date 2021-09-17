@@ -1,5 +1,8 @@
-extends "res://Scenes/Torres/Torres.gd"
+extends Node2D
 var is_attacking = false
+var built = false
+var type
+onready var animated_sprite : AnimatedSprite = get_node("Torre")
 onready var sound_attack : AudioStreamPlayer = get_node("SoundAttack")
 
 func _ready():
