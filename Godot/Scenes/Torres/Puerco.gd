@@ -26,3 +26,5 @@ func _on_Rango_body_exited(body):
 	if built: 
 		body.get_parent().slow_speed(false,Data.tower_data[type]["damage"])
 
+func _on_Puerco_tree_entered():
+	$SoundPick.play()

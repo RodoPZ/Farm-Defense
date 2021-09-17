@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/resbaloso_hit.wav-377f53c0f11b4207a5df80619beba87b.sample"
+
+[deps]
+
+source_file="res://Assets/Sound/SFX/resbaloso_hit.wav"
+dest_files=[ "res://.import/resbaloso_hit.wav-377f53c0f11b4207a5df80619beba87b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

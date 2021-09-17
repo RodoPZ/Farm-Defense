@@ -33,6 +33,7 @@ func update_tower_preview(new_position, color):
 ##
 
 func _on_pause_toggled(_button_pressed):
+	$SoundButtonPressed.play()
 	if get_tree().is_paused():
 		Data.player["Player"]["paused"] = false
 		get_tree().paused = false
@@ -46,8 +47,17 @@ func _on_pause_toggled(_button_pressed):
 		
 
 func _on_accel_toggled(button_pressed):
-		if button_pressed == true:
-			Engine.set_time_scale(2)
-		else:
-			Engine.set_time_scale(1)
+	$SoundButtonPressed.play()
+	if button_pressed:
+		Engine.set_time_scale(1.5)
+	else:
+		Engine.set_time_scale(1)
 			
+
+
+func _on_MusicButton_toggled(_button_pressed):
+	$SoundButtonPressed.play()
+	if get_node("MusicLevel").stream_paused == false:
+		get_node("MusicLevel").stream_paused = true
+	else:
+		get_node("MusicLevel").stream_paused = false

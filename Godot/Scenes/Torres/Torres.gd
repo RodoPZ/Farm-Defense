@@ -9,7 +9,9 @@ var enemy
 var ready = true
 var atack_anim = true
 #var nombre = ""
+
 onready var animated_sprite : AnimatedSprite = get_node("Torre")
+onready var attack_sound : AudioStreamPlayer = get_node("SoundAttack")
 #Comenté connect porque daba errores rodo (junto con todo el ready)
 #func _ready():
 #	connect("", self, "signal")
@@ -77,6 +79,7 @@ func select_enemy():
 
 func fire():
 	ready = false
+	attack_sound.play()
 	var spell_instance = spell.instance()
 	spell_instance.init(enemy_array[0],type)
 	spell_instance.position = get_node("Torre/Position2D").get_global_position()
@@ -85,8 +88,6 @@ func fire():
 	yield(get_tree().create_timer(Data.tower_data[type]["rof"]), "timeout")
 	ready = true
 	
-
-# si body se usa quitar el underscore
 func _on_Rango_body_entered(body):
 	enemy_array.append(body.get_parent())
 	

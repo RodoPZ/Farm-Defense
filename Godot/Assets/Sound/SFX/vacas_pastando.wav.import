@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/vacas_pastando.wav-404da85ec596676f1a0be067c89bd521.sample"
+
+[deps]
+
+source_file="res://Assets/Sound/SFX/vacas_pastando.wav"
+dest_files=[ "res://.import/vacas_pastando.wav-404da85ec596676f1a0be067c89bd521.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

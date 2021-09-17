@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Assets/Sprites/Slime.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Enemigos/Slime.gd" type="Script" id=2]
 [ext_resource path="res://Assets/GUI/HP_bar.png" type="Texture" id=3]
 [ext_resource path="res://Assets/GUI/HP_bar_under.png" type="Texture" id=4]
 [ext_resource path="res://Assets/GUI/HP_bar_over.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sound/SFX/score.wav" type="AudioStream" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -87,7 +88,7 @@ collision_mask = 3
 position = Vector2( 0, -3 )
 frames = SubResource( 14 )
 animation = "walk"
-frame = 4
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
@@ -109,5 +110,9 @@ nine_patch_stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SonidoPuntos" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -15.0
 
 [connection signal="animation_finished" from="KinematicBody2D/Enemigo" to="." method="_on_Enemigo_animation_finished"]

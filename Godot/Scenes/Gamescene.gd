@@ -14,8 +14,6 @@ var game_started = false
 var num_enemigos: int
 var rng
 
-
-
 func _ready():
 	randomize()
 	map_node = get_node("Map1")
@@ -27,17 +25,9 @@ func _ready():
 func _process(_delta):
 	if build_mode:
 		update_tower_preview()
-	
-	#Por alguna razón a veces score se vuelve mayor que needed_score y se desfasan las oleadas, si se encuentra el fallo quitar esto
-	if needed_score < Data.player["Player"]["score"]:
-		#print("xd")
-		needed_score += Data.player["Player"]["score"] - needed_score
-
-	#if(needed_score == Data.player["Player"]["score"] and current_wave != 10 and game_started):
+		
 	if(needed_score == Data.player["Player"]["score"] and game_started):
 		start_next_wave()
-	
-	#print(needed_score)
 	
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
@@ -60,7 +50,6 @@ func start_next_wave():
 
 func retrieve_wave_data():
 	#print(current_wave)
-	#Sale error aqui al final porque llega al limite de waves, alrato lo movemos jeje
 	#for i in Data.wave["Wave"+str(current_wave)]["wave"]:
 	#	needed_score += Data.enemigos[i[0]]["score"]	
 	#var wave_data = Data.wave["Wave"+str(current_wave)]["wave"]	
@@ -105,6 +94,7 @@ func enemigo_entra_game_over(body):
 			needed_score -= Data.enemigos[enemy]["score"]
 
 func pickNumEnemies(ratio_crec_wave, var_num_enemies, max_enemigos):
+# warning-ignore:narrowing_conversion
 	num_enemigos = round(current_wave * (ratio_crec_wave + rand_range(-var_num_enemies,var_num_enemies)))
 	if num_enemigos > max_enemigos:
 		num_enemigos = max_enemigos
@@ -112,17 +102,14 @@ func pickNumEnemies(ratio_crec_wave, var_num_enemies, max_enemigos):
 func checkSuperWave(ratio_slime, ratio_esqueleto, ratio_ogro, prob_super_esqueletos, prob_super_slimes, prob_super_ogros):
 	rng = randf()
 	if rng < prob_super_slimes and current_wave >= 3:
-		#print("SUPER SLIME")
 		ratio_slime = .8
 		ratio_esqueleto = .1
 		ratio_ogro = .1
 	elif prob_super_slimes < rng and rng < prob_super_slimes + prob_super_esqueletos and current_wave >= 5:
-		#("SUPER ESQ")
 		ratio_slime = .1
 		ratio_esqueleto = .8
 		ratio_ogro = .1
 	elif prob_super_slimes + prob_super_esqueletos < rng and rng < prob_super_slimes + prob_super_esqueletos + prob_super_ogros and current_wave >= 8:
-		#print("SUPER OGRO")
 		ratio_slime = .25
 		ratio_esqueleto = .25
 		ratio_ogro = .5
@@ -131,19 +118,22 @@ func checkSuperWave(ratio_slime, ratio_esqueleto, ratio_ogro, prob_super_esquele
 func generateEnemy(wave, ratio_slime, ratio_esqueleto, ratio_ogro):
 	rng = randf()
 	if rng < ratio_slime:
-		wave.append(["Slime",rand_range(0.5,1)])
+		wave.append(["Slime",rand_range(0.5,2)])
 	elif ratio_slime < rng and rng < ratio_slime + ratio_esqueleto:
 		if current_wave >= 3:
-			wave.append(["Esqueleto",rand_range(0.5,2)])
+			wave.append(["Esqueleto",rand_range(0.2,0.5)])
+			wave.append(["Esqueleto",rand_range(0.2,0.5)])
+			wave.append(["Esqueleto",rand_range(0.2,0.5)])
 		else:
-			wave.append(["Slime",rand_range(0.5,1)])
+			wave.append(["Slime",rand_range(0.5,2)])
 	elif ratio_slime + ratio_esqueleto < rng and rng < ratio_slime + ratio_esqueleto + ratio_ogro:
 		if current_wave >= 5:
-			wave.append(["Ogro",rand_range(0.5,5)])
+			wave.append(["Ogro",rand_range(2,6)])
 		elif current_wave >= 3:
-			wave.append(["Esqueleto",rand_range(0.5,2)])
+			wave.append(["Esqueleto",rand_range(0.2,0.5)])
+			wave.append(["Esqueleto",rand_range(0.2,0.5)])
 		else:
-			wave.append(["Slime",rand_range(0.5,1)])
+			wave.append(["Slime",rand_range(0.5,2)])
 	
 
 ##
@@ -196,8 +186,3 @@ func verify_and_build():
 		new_tower.type = build_type
 		map_node.get_node("Torres").add_child(new_tower,true)
 		map_node.get_node("TowerExclusion").set_cellv(build_tile, 11)
-
-
-
-
-

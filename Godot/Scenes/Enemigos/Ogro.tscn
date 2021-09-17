@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Assets/Sprites/Ogro.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Enemigos/Ogro.gd" type="Script" id=2]
 [ext_resource path="res://Assets/GUI/HP_bar_over.png" type="Texture" id=3]
 [ext_resource path="res://Assets/GUI/HP_bar_under.png" type="Texture" id=4]
 [ext_resource path="res://Assets/GUI/HP_bar.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sound/SFX/score.wav" type="AudioStream" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -117,5 +118,9 @@ nine_patch_stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="SonidoPuntos" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -5.0
 
 [connection signal="animation_finished" from="KinematicBody2D/Enemigo" to="." method="_on_Enemigo_animation_finished"]
