@@ -13,7 +13,7 @@ func _process(_delta):
 	
 func _on_Timer_timeout():
 	if is_attacking == false:
-		sound_attack.play()
+		#sound_attack.play()
 		animated_sprite.play("attack")
 		is_attacking = true
 
