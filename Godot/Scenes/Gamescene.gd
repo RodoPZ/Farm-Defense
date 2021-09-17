@@ -118,19 +118,22 @@ func checkSuperWave(ratio_slime, ratio_esqueleto, ratio_ogro, prob_super_esquele
 func generateEnemy(wave, ratio_slime, ratio_esqueleto, ratio_ogro):
 	rng = randf()
 	if rng < ratio_slime:
-		wave.append(["Slime",rand_range(0.5,1)])
+		wave.append(["Slime",rand_range(0.5,2)])
 	elif ratio_slime < rng and rng < ratio_slime + ratio_esqueleto:
 		if current_wave >= 3:
-			wave.append(["Esqueleto",rand_range(0.5,2)])
+			wave.append(["Esqueleto",rand_range(0.2,0.5)])
+			wave.append(["Esqueleto",rand_range(0.2,0.5)])
+			wave.append(["Esqueleto",rand_range(0.2,0.5)])
 		else:
-			wave.append(["Slime",rand_range(0.5,1)])
+			wave.append(["Slime",rand_range(0.5,2)])
 	elif ratio_slime + ratio_esqueleto < rng and rng < ratio_slime + ratio_esqueleto + ratio_ogro:
 		if current_wave >= 5:
-			wave.append(["Ogro",rand_range(0.5,5)])
+			wave.append(["Ogro",rand_range(2,6)])
 		elif current_wave >= 3:
-			wave.append(["Esqueleto",rand_range(0.5,2)])
+			wave.append(["Esqueleto",rand_range(0.2,0.5)])
+			wave.append(["Esqueleto",rand_range(0.2,0.5)])
 		else:
-			wave.append(["Slime",rand_range(0.5,1)])
+			wave.append(["Slime",rand_range(0.5,2)])
 	
 
 ##

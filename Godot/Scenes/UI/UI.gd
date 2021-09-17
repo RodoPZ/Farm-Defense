@@ -49,7 +49,7 @@ func _on_pause_toggled(_button_pressed):
 func _on_accel_toggled(button_pressed):
 	$SoundButtonPressed.play()
 	if button_pressed:
-		Engine.set_time_scale(2)
+		Engine.set_time_scale(1.5)
 	else:
 		Engine.set_time_scale(1)
 			

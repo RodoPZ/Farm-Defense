@@ -3,7 +3,7 @@ extends Node
 var player = {
 	"Player": {
 	"score": 0,
-	"leche": 99,
+	"leche": 2,
 	"hp": 3,
 	"game_over": false,
 	"paused": true
@@ -12,53 +12,53 @@ var player = {
 
 var tower_data = {
 	"Pollo": {
-	"damage": 3,
+	"damage": 2,
 	"rof": 1,
 	"range": 4,
 	"price": 1},
 	
 	"Gallina":{
-	"damage": 1,
+	"damage": .75,
 	"rof": 1,
-	"range": 4,
+	"range": 3,
 	"price": 2},
-	
-	"Puerco":{
-	"damage":0,
-	"rof": 1,
-	"range": 4,
-	"price": 1},
 	
 	"Cabra":{
 	"damage": 10,
-	"rof": 5,
-	"range": 3,
-	"price": 1},
+	"rof": 2,
+	"range": 2,
+	"price": 3},
+	
+	"Puerco":{
+	"damage":0,
+	"rof": 2.5,
+	"range": 4,
+	"price": 3},
 	
 	"Vaca":{
 	"damage": 0,
 	"rof": 1,
 	"range": 0,
 	"drop_time": 30,
-	"price": 1}
+	"price": 2}
 	}
 
 var enemigos ={
 	"Slime":{
 	"speed": 8,
-	"hp": 20,
-	"score": 1
+	"hp": 15,
+	"score": 2
 	},
 	
 	"Esqueleto":{
-	"speed": 30,
-	"hp": 8,
-	"score": 5
+	"speed": 12,
+	"hp": 5,
+	"score": 1
 	},
 	
 	"Ogro":{
 	"speed": 4,
-	"hp": 80,
+	"hp": 50,
 	"score": 20
 	}
 	}
