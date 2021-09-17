@@ -1,5 +1,8 @@
-extends "res://Scenes/Torres/Torres.gd"
+extends Node2D
 var is_attacking = false
+var built = false
+var type
+onready var animated_sprite : AnimatedSprite = get_node("Torre")
 
 func _ready():
 	$Timer.wait_time = Data.tower_data["Vaca"]["drop_time"]

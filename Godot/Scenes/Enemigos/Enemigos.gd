@@ -1,30 +1,39 @@
 extends PathFollow2D
 var tower_type = null
-var tower_name = ""
-var speed = 0
+var enemy_name = ""
 var is_dead = false
 var hp = 50
+var original_speed = 0
+var current_speed = 0
 onready var animated_sprite : AnimatedSprite = get_node("KinematicBody2D/Enemigo")
 onready var health_bar = get_node("HealthBar")
 
-func _init(_tower_name = 0).():
-	tower_name = _tower_name
+
+func _init(_enemy_name = 0).():
+	enemy_name = _enemy_name
 	
 func _ready():
-	speed = Data.enemigos[tower_name]["speed"]	
-	hp = Data.enemigos[tower_name]["hp"]	
+	hp = Data.enemigos[enemy_name]["hp"]	
 	health_bar.max_value = hp
 	health_bar.value = hp
-  
+	original_speed = Data.enemigos[enemy_name]["speed"]
+	current_speed = original_speed
 #	health_bar.set_as_toplevel(true)
 
 
 
 func _physics_process(delta):
 	if is_dead == false:
-		set_offset(get_offset() + speed * delta)
+		set_offset(get_offset() + current_speed* delta)
 	else:
 		set_offset(get_offset() + 0 * delta)
+
+func slow_speed(mod,slow_ratio):
+	if mod:
+		current_speed = original_speed*slow_ratio
+	else: 
+		current_speed = original_speed*1
+	return current_speed
 
 func on_hit(damage):
 	hp -= damage
@@ -32,7 +41,7 @@ func on_hit(damage):
 	if hp <= 0:
 		on_destroy()
 		#NOTA solo para slime, generalizar #Listones 
-		Data.player["Player"]["score"] += Data.enemigos[tower_name]["score"]
+		Data.player["Player"]["score"] += Data.enemigos[enemy_name]["score"]
 		
 func on_destroy():
 	is_dead = true

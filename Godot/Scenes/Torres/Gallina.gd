@@ -20,8 +20,4 @@ func fire():
 	yield(get_tree().create_timer(Data.tower_data[type]["rof"]), "timeout")
 	ready = true
 	
-func _on_Rango_body_entered(body):
-	enemy_array.append(body.get_parent())
-	
-func _on_Rango_body_exited(body):
-	enemy_array.erase(body.get_parent())
+
