@@ -1,8 +1,11 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Assets/Sprites/Vaca.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Torres/Vaca.gd" type="Script" id=2]
 [ext_resource path="res://Assets/GUI/Leche.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sound/SFX/Muu.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/Sound/SFX/pick_milk.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Sound/SFX/vacas_pastando.wav" type="AudioStream" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -87,7 +90,7 @@ script = ExtResource( 2 )
 position = Vector2( 8, 8 )
 frames = SubResource( 16 )
 animation = "idle"
-frame = 4
+frame = 3
 playing = true
 
 [node name="Rango" type="Area2D" parent="."]
@@ -114,6 +117,19 @@ __meta__ = {
 position = Vector2( 8, 8 )
 texture = ExtResource( 3 )
 
+[node name="SoundPickMilk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -10.0
+
+[node name="SoundPick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -5.0
+
+[node name="SoundAttack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -5.0
+
+[connection signal="tree_entered" from="." to="." method="_on_Vaca_tree_entered"]
 [connection signal="animation_finished" from="Torre" to="." method="_on_Torre_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="Leche" to="." method="_on_Leche_pressed"]

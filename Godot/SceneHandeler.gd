@@ -8,6 +8,7 @@ func _ready():
 	get_node("MainMenu/M/VB/Start").connect("pressed", self, "on_new_game_pressed")
 
 func on_new_game_pressed():
+	$SoundButtonPressed.play()
 	get_node("MainMenu").queue_free()
 	game_scene = load("res://Scenes/Gamescene.tscn").instance()
 	add_child(game_scene)

@@ -29,8 +29,6 @@ func _process(_delta):
 	if(needed_score == Data.player["Player"]["score"] and game_started):
 		start_next_wave()
 	
-	#print(needed_score)
-	
 func _unhandled_input(event):
 	if event.is_action_released("ui_cancel") and build_mode == true:
 		cancel_build_mode()
@@ -52,7 +50,6 @@ func start_next_wave():
 
 func retrieve_wave_data():
 	#print(current_wave)
-	#Sale error aqui al final porque llega al limite de waves, alrato lo movemos jeje
 	#for i in Data.wave["Wave"+str(current_wave)]["wave"]:
 	#	needed_score += Data.enemigos[i[0]]["score"]	
 	#var wave_data = Data.wave["Wave"+str(current_wave)]["wave"]	
@@ -97,6 +94,7 @@ func enemigo_entra_game_over(body):
 			needed_score -= Data.enemigos[enemy]["score"]
 
 func pickNumEnemies(ratio_crec_wave, var_num_enemies, max_enemigos):
+# warning-ignore:narrowing_conversion
 	num_enemigos = round(current_wave * (ratio_crec_wave + rand_range(-var_num_enemies,var_num_enemies)))
 	if num_enemigos > max_enemigos:
 		num_enemigos = max_enemigos
@@ -104,17 +102,14 @@ func pickNumEnemies(ratio_crec_wave, var_num_enemies, max_enemigos):
 func checkSuperWave(ratio_slime, ratio_esqueleto, ratio_ogro, prob_super_esqueletos, prob_super_slimes, prob_super_ogros):
 	rng = randf()
 	if rng < prob_super_slimes and current_wave >= 3:
-		#print("SUPER SLIME")
 		ratio_slime = .8
 		ratio_esqueleto = .1
 		ratio_ogro = .1
 	elif prob_super_slimes < rng and rng < prob_super_slimes + prob_super_esqueletos and current_wave >= 5:
-		#("SUPER ESQ")
 		ratio_slime = .1
 		ratio_esqueleto = .8
 		ratio_ogro = .1
 	elif prob_super_slimes + prob_super_esqueletos < rng and rng < prob_super_slimes + prob_super_esqueletos + prob_super_ogros and current_wave >= 8:
-		#print("SUPER OGRO")
 		ratio_slime = .25
 		ratio_esqueleto = .25
 		ratio_ogro = .5
