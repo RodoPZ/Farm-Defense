@@ -23,39 +23,39 @@ region = Rect2( 48, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
-region = Rect2( 112, 0, 16, 16 )
+region = Rect2( 160, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
-region = Rect2( 128, 0, 16, 16 )
+region = Rect2( 176, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
-region = Rect2( 144, 0, 16, 16 )
+region = Rect2( 192, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
-region = Rect2( 160, 0, 16, 16 )
+region = Rect2( 112, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 1 )
-region = Rect2( 64, 0, 16, 16 )
+region = Rect2( 128, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 1 )
-region = Rect2( 80, 0, 16, 16 )
+region = Rect2( 144, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 1 )
-region = Rect2( 96, 0, 16, 16 )
+region = Rect2( 64, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 1 )
-region = Rect2( 176, 0, 16, 16 )
+region = Rect2( 80, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 1 )
-region = Rect2( 192, 0, 16, 16 )
+region = Rect2( 96, 0, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=14]
 animations = [ {
@@ -64,19 +64,19 @@ animations = [ {
 "name": "idle",
 "speed": 2.0
 }, {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 6 ), SubResource( 8 ) ],
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 5 ) ],
+"loop": false,
+"name": "attack_down",
+"speed": 6.0
+}, {
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 8 ) ],
 "loop": false,
 "name": "attack_up",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 10 ), SubResource( 1 ) ],
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 11 ) ],
 "loop": false,
 "name": "attack_right",
-"speed": 6.0
-}, {
-"frames": [ SubResource( 8 ), SubResource( 12 ), SubResource( 13 ), SubResource( 5 ) ],
-"loop": false,
-"name": "attack_down",
 "speed": 6.0
 } ]
 
@@ -88,6 +88,7 @@ script = ExtResource( 2 )
 
 [node name="Torre" type="AnimatedSprite" parent="."]
 position = Vector2( 8, 7.91161 )
+rotation = -0.00351712
 frames = SubResource( 14 )
 animation = "idle"
 
@@ -106,7 +107,6 @@ volume_db = -5.0
 [node name="SoundAttack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 
-[connection signal="animation_finished" from="Torre" to="." method="_on_Torre_animation_finished"]
 [connection signal="body_entered" from="Rango" to="." method="_on_Rango_body_entered"]
 [connection signal="body_exited" from="Rango" to="." method="_on_Rango_body_exited"]
 [connection signal="tree_entered" from="SoundPick" to="." method="_on_SoundPick_tree_entered"]

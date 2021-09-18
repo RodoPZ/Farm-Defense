@@ -19,39 +19,39 @@ region = Rect2( 32, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
-region = Rect2( 96, 0, 16, 16 )
+region = Rect2( 144, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
-region = Rect2( 112, 0, 16, 16 )
+region = Rect2( 160, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
-region = Rect2( 128, 0, 16, 16 )
+region = Rect2( 176, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 1 )
-region = Rect2( 48, 0, 16, 16 )
+region = Rect2( 96, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
-region = Rect2( 64, 0, 16, 16 )
+region = Rect2( 112, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 1 )
-region = Rect2( 80, 0, 16, 16 )
+region = Rect2( 128, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 1 )
-region = Rect2( 144, 0, 16, 16 )
+region = Rect2( 48, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 1 )
-region = Rect2( 160, 0, 16, 16 )
+region = Rect2( 64, 0, 16, 16 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 1 )
-region = Rect2( 176, 0, 16, 16 )
+region = Rect2( 80, 0, 16, 16 )
 
 [sub_resource type="SpriteFrames" id=13]
 animations = [ {
@@ -60,20 +60,20 @@ animations = [ {
 "name": "idle",
 "speed": 2.0
 }, {
-"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 4 ) ],
+"loop": false,
+"name": "attack_down",
+"speed": 2.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 7 ) ],
 "loop": false,
 "name": "attack_up",
 "speed": 9.0
 }, {
-"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 7 ) ],
+"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 10 ) ],
 "loop": false,
 "name": "attack_right",
 "speed": 9.0
-}, {
-"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
-"loop": false,
-"name": "attack_down",
-"speed": 2.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=14]
@@ -86,7 +86,7 @@ script = ExtResource( 2 )
 position = Vector2( 8, 8 )
 frames = SubResource( 13 )
 animation = "idle"
-frame = 1
+frame = 2
 playing = true
 
 [node name="Position2D" type="Position2D" parent="Torre"]
@@ -107,6 +107,5 @@ stream = ExtResource( 4 )
 volume_db = -15.0
 
 [connection signal="tree_entered" from="." to="." method="_on_Pollo_tree_entered"]
-[connection signal="animation_finished" from="Torre" to="." method="_on_Torre_animation_finished"]
 [connection signal="body_entered" from="Rango" to="." method="_on_Rango_body_entered"]
 [connection signal="body_exited" from="Rango" to="." method="_on_Rango_body_exited"]

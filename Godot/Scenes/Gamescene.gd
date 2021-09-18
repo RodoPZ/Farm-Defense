@@ -15,6 +15,7 @@ var num_enemigos: int
 var rng
 
 func _ready():
+	$UI/MusicLevel.play(0)
 	randomize()
 	map_node = get_node("Map1")
 	var entered_game_over = get_node("Map1/GameOver1")
@@ -41,6 +42,7 @@ func _unhandled_input(event):
 ##
 
 func start_next_wave():
+	$MusicNextWave.play()
 	var wave_data = retrieve_wave_data()
 	$UI/Path2D/PathFollow2D/WaveLabel.visible = true
 	yield(get_tree().create_timer(5),"timeout") ##Tiempo entre oleadas para que no comiencen instantaneamente
