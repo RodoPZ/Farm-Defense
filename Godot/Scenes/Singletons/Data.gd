@@ -26,12 +26,12 @@ var tower_data = {
 	"Cabra":{
 	"damage": 10,
 	"rof": 2,
-	"range": 2,
+	"range": 3,
 	"price": 3},
 	
 	"Puerco":{
 	"damage":.5,
-	"rof": 2.5,
+	"rof": 4,
 	"range": 4,
 	"price": 3},
 	

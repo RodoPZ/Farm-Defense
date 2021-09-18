@@ -20,7 +20,7 @@ func _ready():
 	var Mapa = Gamescene.get_child(0).name
 	original_speed = Data.enemigos[enemy_name]["speed"]
 	current_speed = original_speed	
-	hp = Data.enemigos[tower_name]["hp"] * (1 + (Gamescene.current_wave-2)*Data.wave_data[Mapa]["hp_inc_rate"])
+	hp = Data.enemigos[enemy_name]["hp"] * (1 + (Gamescene.current_wave-2)*Data.wave_data[Mapa]["hp_inc_rate"])
 	#print(hp)
 	health_bar.max_value = hp
 	health_bar.value = hp
@@ -55,5 +55,5 @@ func on_destroy():
 func _on_Enemigo_animation_finished():
 	if is_dead:
 		queue_free()
-		Data.player["Player"]["score"] += Data.enemigos[tower_name]["score"]
+		Data.player["Player"]["score"] += Data.enemigos[enemy_name]["score"]
 		
