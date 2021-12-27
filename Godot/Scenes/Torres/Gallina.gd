@@ -1,6 +1,5 @@
 extends "res://Scenes/Torres/Torres.gd"
 
-
 func turn():
 	animate()
 

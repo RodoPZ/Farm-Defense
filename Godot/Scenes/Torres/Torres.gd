@@ -8,22 +8,15 @@ var built = false
 var enemy
 var ready = true
 var atack_anim = true
-#var nombre = ""
 
 onready var animated_sprite : AnimatedSprite = get_node("Torre")
 onready var attack_sound : AudioStreamPlayer = get_node("SoundAttack")
-#Comenté connect porque daba errores rodo (junto con todo el ready)
-#func _ready():
-#	connect("", self, "signal")
 
 func _ready():
 	if built:
 		self.get_node("Rango/CollisionShape2D").get_shape().extents = 8*Vector2(Data.tower_data[type]["range"],Data.tower_data[type]["range"])
 		animated_sprite.speed_scale = 2
 
-##
-## Rotación de sprites
-#Si se usa delta quitar undescore
 func _physics_process(_delta):
 	if enemy_array.size() != 0 and built:
 		select_enemy()
@@ -34,7 +27,6 @@ func _physics_process(_delta):
 		animate_idle()
 		enemy = null
 		
-
 func turn():
 	get_node("Torre").look_at(enemy.position)
 	animate()
@@ -76,7 +68,6 @@ func select_enemy():
 	var enemy_index = enemy_progress_array.find(max_offset)
 	enemy = enemy_array[enemy_index]
 
-
 func fire():
 	ready = false
 	attack_sound.play()
@@ -91,9 +82,5 @@ func fire():
 func _on_Rango_body_entered(body):
 	enemy_array.append(body.get_parent())
 	
-	
 func _on_Rango_body_exited(body):
 	enemy_array.erase(body.get_parent())
-
-
-	
