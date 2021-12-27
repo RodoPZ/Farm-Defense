@@ -1,4 +1,6 @@
 # Farm defense
+You can play a working version of the game on https://tonyram9906.itch.io/farm-defense or _Agregar link de newgrounds_
+
 This prototipe was made in the Godot game engine and coded using GDscript.
 
 This is a Godot tower defense **prototype**, it is intended to be a simple reference for **beginners** making a similar game.
