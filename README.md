@@ -1,5 +1,5 @@
 # Farm defense
-You can play a working version of the game on https://tonyram9906.itch.io/farm-defense or _Agregar link de newgrounds_
+You can play a working version of the game on https://tonyram9906.itch.io/farm-defense or https://www.newgrounds.com/portal/view/816878
 
 This prototipe was made in the Godot game engine using GDscript.
 
