@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Assets/Sprites/Vaca.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/UI/ScoreLabel.gd" type="Script" id=2]
@@ -21,6 +21,11 @@
 [ext_resource path="res://Assets/Sprites/Pollo.png" type="Texture" id=19]
 [ext_resource path="res://Assets/GUI/Music_button.png" type="Texture" id=20]
 [ext_resource path="res://Assets/Sound/main_retro.ogg" type="AudioStream" id=21]
+[ext_resource path="res://Scenes/UI/VolumeSlider.gd" type="Script" id=22]
+[ext_resource path="res://Scenes/UI/Volumebar.tres" type="StyleBox" id=23]
+[ext_resource path="res://Assets/GUI/slider_clicked.png" type="Texture" id=24]
+[ext_resource path="res://Assets/GUI/slider_idle.png" type="Texture" id=25]
+[ext_resource path="res://Assets/GUI/slider_main.png" type="Texture" id=26]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -70,6 +75,10 @@ size = 12
 outline_size = 1
 outline_color = Color( 0.937255, 0.960784, 0.960784, 1 )
 font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 26 )
+region_rect = Rect2( 0, 0, 48, 8 )
 
 [node name="Gamescene" type="Node2D"]
 script = ExtResource( 7 )
@@ -296,6 +305,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VolumeSlider" type="HSlider" parent="UI"]
+margin_left = 2.0
+margin_top = 24.0
+margin_right = 51.0
+margin_bottom = 34.0
+custom_icons/grabber_highlight = ExtResource( 24 )
+custom_icons/grabber = ExtResource( 25 )
+custom_styles/slider = SubResource( 16 )
+custom_styles/grabber_area_highlight = ExtResource( 23 )
+custom_styles/grabber_area = ExtResource( 23 )
+max_value = 1.0
+step = 0.05
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MusicLevel" type="AudioStreamPlayer" parent="UI"]
 stream = ExtResource( 21 )
 volume_db = -10.0
@@ -307,3 +333,5 @@ stream = ExtResource( 18 )
 [connection signal="toggled" from="UI/HUD/Buttons/pause" to="UI" method="_on_pause_toggled"]
 [connection signal="toggled" from="UI/HUD/Buttons/accel" to="UI" method="_on_accel_toggled"]
 [connection signal="toggled" from="UI/HUD/Buttons/MusicButton" to="UI" method="_on_MusicButton_toggled"]
+[connection signal="mouse_exited" from="UI/VolumeSlider" to="UI/VolumeSlider" method="_on_mouse_exited"]
+[connection signal="value_changed" from="UI/VolumeSlider" to="UI/VolumeSlider" method="_on_value_changed"]

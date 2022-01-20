@@ -8,7 +8,7 @@ func _ready():
 func on_new_game_pressed():
 	$SoundButtonPressed.play()
 	get_node("MainMenu").queue_free()
-	game_scene = load("res://Scenes/main/Gamescene.tscn").instance()
+	game_scene = load("res://Scenes/Main/Gamescene.tscn").instance()
 	add_child(game_scene)
 
 func _process(_delta):
