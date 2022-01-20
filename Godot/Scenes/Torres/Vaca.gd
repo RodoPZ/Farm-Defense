@@ -1,5 +1,9 @@
 extends Node2D
+#extends "res://Scenes/Torres/Torres.gd"
+
 var is_attacking = false
+var built = false
+var type
 onready var animated_sprite : AnimatedSprite = get_node("Torre")
 
 func _ready():
@@ -10,6 +14,7 @@ func _process(_delta):
 		$Timer.set_paused(true)
 	else:
 		$Timer.set_paused(false)
+	
 	
 func _on_Timer_timeout():
 	if is_attacking == false:
