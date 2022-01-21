@@ -1,6 +1,6 @@
 
 # Farm defense
-You can play a working version of the game on https://tonyram9906.itch.io/farm-defense or https://www.newgrounds.com/portal/view/816878
+You can play a working version of the game on https://tonyram9906.itch.io/farm-defense or https://www.newgrounds.com/portal/view/815005.
 
 This prototipe was made in the Godot game engine using GDscript.
 
@@ -11,14 +11,24 @@ This is a Godot tower defense **prototype**, it is intended to be a simple refer
 
 
 ###  Installation
-Just import the Source/Project.godot into the Godot engine.
+Just import the Source/**Project.godot** using the Godot engine.
 
 
-### Controls
+## Controls
 ![Game controls](https://raw.githubusercontent.com/RodoPZ/Farm-Defense/develop/docs/Instructions.png?token=GHSAT0AAAAAABP2MQF2MNJ5H3S7L3C7YZYUYPTMTSA)
 
+#### Towers
+- Cow: Produces milk.
+- Chick: Shoots 1 bullet quickly
+- Chicken: Shoots eggs, dealing area damage
+- Pig: Slow enemies
+- Goat: Throws a kick that deals a lot of damage
 
+#### Monsters
+- Skeleton: Moves fast, low HP
+- Ogre: Moves slow, high HP
+- Slime: Moves normal, normal HP
 
-### License
+## License
 
 MIT
