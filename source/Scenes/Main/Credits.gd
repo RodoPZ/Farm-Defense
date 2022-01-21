@@ -113,7 +113,7 @@ func _process(delta):
 func finish():
 	if not finished:
 		finished = true
-		get_tree().change_scene("res://SceneHandeler.tscn")
+		get_tree().change_scene("res://Scenes/Main/SceneHandeler.tscn")
 
 
 func add_line():

@@ -11,8 +11,12 @@ config_version=4
 [application]
 
 config/name="Farm Defense"
-run/main_scene="res://SceneHandeler.tscn"
+run/main_scene="res://Scenes/Main/SceneHandeler.tscn"
 config/icon="res://icon.png"
+
+[audio]
+
+default_bus_layout="res://Scenes/UI/default_bus_layout.tres"
 
 [autoload]
 
@@ -63,4 +67,4 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://Scenes/UI/default_env.tres"

@@ -118,6 +118,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="MusicButton" type="TextureButton" parent="UI/HUD"]
+margin_left = 51.0
+margin_top = 24.0
+margin_right = 59.0
+margin_bottom = 33.0
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Score" type="VBoxContainer" parent="UI/HUD"]
 margin_right = 256.0
 margin_bottom = 180.0
@@ -135,8 +148,8 @@ texture = ExtResource( 9 )
 
 [node name="Buttons" type="HBoxContainer" parent="UI/HUD"]
 anchor_bottom = 0.193
-margin_left = 136.0
-margin_right = 179.0
+margin_left = 141.0
+margin_right = 184.0
 margin_bottom = -11.792
 custom_constants/separation = 0
 __meta__ = {
@@ -162,19 +175,6 @@ margin_bottom = 16.0
 toggle_mode = true
 texture_normal = SubResource( 3 )
 texture_pressed = SubResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MusicButton" type="TextureButton" parent="UI/HUD/Buttons"]
-margin_left = 32.0
-margin_top = 4.0
-margin_right = 40.0
-margin_bottom = 12.0
-size_flags_vertical = 4
-toggle_mode = true
-texture_normal = ExtResource( 20 )
-texture_pressed = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -330,8 +330,8 @@ volume_db = -10.0
 stream = ExtResource( 18 )
 
 [connection signal="visibility_changed" from="UI/Path2D/PathFollow2D/WaveLabel" to="UI/Path2D/PathFollow2D/WaveLabel" method="_on_WaveLabel_visibility_changed"]
+[connection signal="toggled" from="UI/HUD/MusicButton" to="UI" method="_on_MusicButton_toggled"]
 [connection signal="toggled" from="UI/HUD/Buttons/pause" to="UI" method="_on_pause_toggled"]
 [connection signal="toggled" from="UI/HUD/Buttons/accel" to="UI" method="_on_accel_toggled"]
-[connection signal="toggled" from="UI/HUD/Buttons/MusicButton" to="UI" method="_on_MusicButton_toggled"]
 [connection signal="mouse_exited" from="UI/VolumeSlider" to="UI/VolumeSlider" method="_on_mouse_exited"]
 [connection signal="value_changed" from="UI/VolumeSlider" to="UI/VolumeSlider" method="_on_value_changed"]

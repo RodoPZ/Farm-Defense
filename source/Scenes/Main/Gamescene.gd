@@ -118,7 +118,7 @@ func generateEnemy(wave, ratio_slime, ratio_esqueleto, ratio_ogro):
 		else:
 			wave.append(["Slime",rand_range(0.5,2)])
 ##
-### Funciones de construcción ###
+### {{{Funciones de construcción ###
 ##
 func initiate_build_mode(tower_type):
 	if build_mode:
@@ -166,3 +166,4 @@ func verify_and_build():
 		new_tower.type = build_type
 		map_node.get_node("Torres").add_child(new_tower,true)
 		map_node.get_node("TowerExclusion").set_cellv(build_tile, 11)
+# }}}
