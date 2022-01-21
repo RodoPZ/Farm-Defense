@@ -1,0 +1,337 @@
+[gd_scene load_steps=38 format=2]
+
+[ext_resource path="res://Assets/Sprites/Vaca.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/UI/ScoreLabel.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Maps/Map1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Font/Fuente.TTF" type="DynamicFontData" id=4]
+[ext_resource path="res://Scenes/UI/WaveLabel.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/UI/HPLabel.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/Main/Gamescene.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Sound/SFX/button2.wav" type="AudioStream" id=8]
+[ext_resource path="res://Assets/GUI/Interfaz.png" type="Texture" id=9]
+[ext_resource path="res://Assets/GUI/Boton_pause.png" type="Texture" id=10]
+[ext_resource path="res://Assets/GUI/Boton_play.png" type="Texture" id=11]
+[ext_resource path="res://Scenes/UI/UI.gd" type="Script" id=12]
+[ext_resource path="res://Scenes/UI/MilkLabel.gd" type="Script" id=13]
+[ext_resource path="res://Assets/Sprites/Cabra.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Sprites/Gallina_icon.png" type="Texture" id=15]
+[ext_resource path="res://Assets/GUI/Boton_accel.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Sprites/Puerco_icon.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Sound/win.wav" type="AudioStream" id=18]
+[ext_resource path="res://Assets/Sprites/Pollo.png" type="Texture" id=19]
+[ext_resource path="res://Assets/GUI/Music_button.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Sound/main_retro.ogg" type="AudioStream" id=21]
+[ext_resource path="res://Scenes/UI/VolumeSlider.gd" type="Script" id=22]
+[ext_resource path="res://Scenes/UI/Volumebar.tres" type="StyleBox" id=23]
+[ext_resource path="res://Assets/GUI/slider_clicked.png" type="Texture" id=24]
+[ext_resource path="res://Assets/GUI/slider_idle.png" type="Texture" id=25]
+[ext_resource path="res://Assets/GUI/slider_main.png" type="Texture" id=26]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -16, 64, 0, 0, 0, 0, 512, 64 )
+}
+
+[sub_resource type="DynamicFont" id=2]
+size = 34
+outline_size = 2
+outline_color = Color( 0.937255, 0.960784, 0.960784, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 11 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = SubResource( 7 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 10 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 16 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 16 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 17
+outline_size = 1
+outline_color = Color( 0.937255, 0.960784, 0.960784, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 12
+outline_size = 1
+outline_color = Color( 0.937255, 0.960784, 0.960784, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 12
+outline_size = 1
+outline_color = Color( 0.937255, 0.960784, 0.960784, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 26 )
+region_rect = Rect2( 0, 0, 48, 8 )
+
+[node name="Gamescene" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="Map1" parent="." instance=ExtResource( 3 )]
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource( 12 )
+
+[node name="SoundButtonPressed" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 8 )
+
+[node name="Path2D" type="Path2D" parent="UI"]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="UI/Path2D"]
+position = Vector2( -16, 64 )
+
+[node name="WaveLabel" type="Label" parent="UI/Path2D/PathFollow2D"]
+visible = false
+margin_left = -168.0
+margin_top = -16.0
+margin_bottom = 18.0
+custom_colors/font_color = Color( 0.137255, 0.137255, 0.180392, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Wave 1"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HUD" type="Control" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicButton" type="TextureButton" parent="UI/HUD"]
+margin_left = 51.0
+margin_top = 24.0
+margin_right = 59.0
+margin_bottom = 33.0
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="VBoxContainer" parent="UI/HUD"]
+margin_right = 256.0
+margin_bottom = 180.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="TextureRect" parent="UI/HUD/Score"]
+margin_right = 256.0
+margin_bottom = 144.0
+rect_pivot_offset = Vector2( 8, 152 )
+mouse_filter = 2
+texture = ExtResource( 9 )
+
+[node name="Buttons" type="HBoxContainer" parent="UI/HUD"]
+anchor_bottom = 0.193
+margin_left = 141.0
+margin_right = 184.0
+margin_bottom = -11.792
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pause" type="TextureButton" parent="UI/HUD/Buttons"]
+pause_mode = 2
+margin_right = 16.0
+margin_bottom = 16.0
+toggle_mode = true
+texture_normal = SubResource( 8 )
+texture_pressed = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="accel" type="TextureButton" parent="UI/HUD/Buttons"]
+pause_mode = 2
+margin_left = 16.0
+margin_right = 32.0
+margin_bottom = 16.0
+toggle_mode = true
+texture_normal = SubResource( 3 )
+texture_pressed = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buildbar" type="Control" parent="UI/HUD"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -32.0
+margin_top = 15.685
+margin_bottom = -0.314972
+rect_pivot_offset = Vector2( -48, 32 )
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Vaca" type="TextureButton" parent="UI/HUD/Buildbar" groups=["build_buttons"]]
+margin_left = 3.57907
+margin_top = 9.12246
+margin_right = 19.5791
+margin_bottom = 25.1225
+rect_min_size = Vector2( 16, 16 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 1 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pollo" type="TextureButton" parent="UI/HUD/Buildbar" groups=["build_buttons"]]
+margin_left = 13.3762
+margin_top = 35.3007
+margin_right = 29.3762
+margin_bottom = 51.3007
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 19 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Gallina" type="TextureButton" parent="UI/HUD/Buildbar" groups=["build_buttons"]]
+margin_left = 3.12378
+margin_top = 57.2628
+margin_right = 19.1238
+margin_bottom = 73.2628
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 15 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Puerco" type="TextureButton" parent="UI/HUD/Buildbar" groups=["build_buttons"]]
+margin_left = 12.2806
+margin_top = 82.9465
+margin_right = 28.2806
+margin_bottom = 98.9465
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 17 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cabra" type="TextureButton" parent="UI/HUD/Buildbar" groups=["build_buttons"]]
+margin_left = 4.0
+margin_top = 104.0
+margin_right = 20.0
+margin_bottom = 120.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 14 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="UI/HUD"]
+margin_left = 78.0
+margin_right = 139.0
+margin_bottom = 17.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_colors/font_color = Color( 0.235294, 0.243137, 0.4, 1 )
+custom_fonts/font = SubResource( 13 )
+text = "0123"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MilkLabel" type="Label" parent="UI/HUD"]
+margin_left = 227.124
+margin_top = 3.93644
+margin_right = 266.124
+margin_bottom = 20.9364
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_colors/font_color = Color( 0.235294, 0.243137, 0.4, 1 )
+custom_fonts/font = SubResource( 14 )
+text = "99"
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HPLabel" type="Label" parent="UI/HUD"]
+margin_left = 185.133
+margin_top = 3.76196
+margin_right = 225.133
+margin_bottom = 20.762
+custom_colors/font_color = Color( 0.235294, 0.243137, 0.4, 1 )
+custom_fonts/font = SubResource( 15 )
+text = "9"
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VolumeSlider" type="HSlider" parent="UI"]
+margin_left = 2.0
+margin_top = 24.0
+margin_right = 51.0
+margin_bottom = 34.0
+custom_icons/grabber_highlight = ExtResource( 24 )
+custom_icons/grabber = ExtResource( 25 )
+custom_styles/slider = SubResource( 16 )
+custom_styles/grabber_area_highlight = ExtResource( 23 )
+custom_styles/grabber_area = ExtResource( 23 )
+max_value = 1.0
+step = 0.05
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicLevel" type="AudioStreamPlayer" parent="UI"]
+stream = ExtResource( 21 )
+volume_db = -10.0
+
+[node name="MusicNextWave" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+
+[connection signal="visibility_changed" from="UI/Path2D/PathFollow2D/WaveLabel" to="UI/Path2D/PathFollow2D/WaveLabel" method="_on_WaveLabel_visibility_changed"]
+[connection signal="toggled" from="UI/HUD/MusicButton" to="UI" method="_on_MusicButton_toggled"]
+[connection signal="toggled" from="UI/HUD/Buttons/pause" to="UI" method="_on_pause_toggled"]
+[connection signal="toggled" from="UI/HUD/Buttons/accel" to="UI" method="_on_accel_toggled"]
+[connection signal="mouse_exited" from="UI/VolumeSlider" to="UI/VolumeSlider" method="_on_mouse_exited"]
+[connection signal="value_changed" from="UI/VolumeSlider" to="UI/VolumeSlider" method="_on_value_changed"]
