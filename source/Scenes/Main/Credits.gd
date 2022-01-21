@@ -4,7 +4,6 @@ const section_time := 1.0
 const line_time := 0.3
 const base_speed := 100
 const speed_up_multiplier := 5.0
-#const title_color := Color.blueviolet
 const title_color := Color( 0.3, 0.2, 0.28, 1 )
 
 var scroll_speed := base_speed

@@ -19,6 +19,9 @@ anchor_bottom = 1.0
 margin_right = 1920.0
 margin_bottom = 1080.0
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CreditsContainer" type="Control" parent="."]
 anchor_right = 1.0
